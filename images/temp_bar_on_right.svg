@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" sodipodi:docname="temp_bar_on_right.svg" inkscape:version="0.48.4 r9939"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="68px" height="481px"
+	 viewBox="0 0 68 481" enable-background="new 0 0 68 481" xml:space="preserve">
+<sodipodi:namedview  inkscape:cy="256.91159" inkscape:cx="-71.694992" inkscape:zoom="1.962578" showgrid="false" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" bordercolor="#666666" pagecolor="#ffffff" id="namedview76" inkscape:current-layer="Layer_1" inkscape:window-maximized="0" inkscape:window-y="34" inkscape:window-x="75" inkscape:window-height="736" inkscape:window-width="1214" inkscape:pageshadow="2" inkscape:pageopacity="0">
+	</sodipodi:namedview>
+<linearGradient id="rect8_1_" gradientUnits="userSpaceOnUse" x1="126" y1="511.999" x2="125.9999" y2="-387.1098" gradientTransform="matrix(1 0 0 1 234 434)">
+	<stop  offset="0" style="stop-color:#041724"/>
+	<stop  offset="1" style="stop-color:#000000"/>
+</linearGradient>
+<rect id="rect8" display="none" fill="url(#rect8_1_)" width="720" height="1001"/>
+<circle id="circle10" display="none" fill="#31ABFF" stroke="#31ABFF" stroke-width="0.5936" stroke-miterlimit="10" cx="633.498" cy="420.198" r="6.141"/>
+<circle id="circle12" display="none" fill="#31ABFF" fill-opacity="0.45" cx="633.498" cy="420.198" r="10.912"/>
+<line id="line14" display="none" fill="none" stroke="#31ABFF" stroke-width="2" stroke-miterlimit="10" x1="633" y1="419" x2="633" y2="607"/>
+<polyline id="polyline16" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,596.969 657,606.938 700,606.938 700,581.018 657,581.018 657,596.969 "/>
+<polyline id="polyline18" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,561.967 657,571.938 700,571.938 700,546.016 657,546.016 657,561.967 "/>
+<polyline id="polyline20" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,526.966 657,536.935 700,536.935 700,511.015 657,511.015 657,526.966 "/>
+<polyline id="polyline22" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,491.964 657,501.934 700,501.934 700,476.014 657,476.014 657,491.964 "/>
+<polyline id="polyline24" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,456.963 657,466.932 700,466.932 700,441.012 657,441.012 657,456.963 "/>
+<polyline id="polyline26" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,421.961 657,431.931 700,431.931 700,406.01 657,406.01 657,421.961 "/>
+<polyline id="polyline28" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,386.96 657,396.929 700,396.929 700,371.009 657,371.009 657,386.96 "/>
+<polyline id="polyline30" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,351.959 657,361.928 700,361.928 700,336.008 657,336.008 657,351.959 "/>
+<polyline id="polyline32" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,316.958 657,326.927 700,326.927 700,301.007 657,301.007 657,316.958 "/>
+<polyline id="polyline34" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,281.956 657,291.925 700,291.925 700,266.005 657,266.005 657,281.956 "/>
+<polyline id="polyline36" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,246.955 657,256.924 700,256.924 700,231.004 657,231.004 657,246.955 "/>
+<polyline id="polyline38" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,211.954 657,221.923 700,221.923 700,196.003 657,196.003 657,211.954 "/>
+<polyline id="polyline40" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,176.952 657,186.921 700,186.921 700,161.001 657,161.001 657,176.952 "/>
+<polyline id="polyline42" display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
+	657,141.951 657,151.92 700,151.92 700,126 657,126 657,141.951 "/>
+<line id="line44" display="none" fill="none" stroke="#31ABFF" stroke-miterlimit="10" x1="640.5" y1="126" x2="640.5" y2="607"/>
+<polyline id="polyline3865" fill="#FE9C00" points="27.996,295.834 27.996,480.114 67.856,480.114 67.856,0.975 27.996,0.975 
+	27.996,295.834 "/>
+</svg>

@@ -1,0 +1,251 @@
+/* Copyright (C) Jaguar Land Rover - All Rights Reserved
+*
+* Proprietary and confidential
+* Unauthorized copying of this file, via any medium, is strictly prohibited
+*
+* THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY 
+* KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+* IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+* PARTICULAR PURPOSE.
+*
+* Filename:	 nouislider.HVAC.css
+* Version:              2.0
+* Date:                 January 2015
+* Project:              RVI - HVAC mobile
+*
+*/
+
+
+/*UI Slider stuff*/
+
+/********LEFT*******/		
+
+.noUiSliderLeft,
+.noUiSliderLeft * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	display: block;
+	cursor: default;
+}
+.noUiSliderLeft {
+	position: absolute;
+	left: 2.75%;
+	top: 14.5%;
+}
+.noUiSliderLeft a {
+	position: absolute;
+	z-index: 0 !important;
+}
+.noUiSliderLeft a:nth-child(2) {
+	background: inherit !important;
+}
+.noUiSliderLeft.vertical a {
+	width: 100%;
+	bottom: 0%;
+}
+.noUiSliderLeft.horizontal a {
+	/*height: 100%;*/
+	right: 0;
+}
+.noUiSliderLeft.connect a,
+.noUiSliderLeft.connect.lower {
+	background: url("../images/temp_bar_on_left.svg") no-repeat 1.5px 5px;
+	background-size: 75%;	
+}
+.noUiSliderLeft.disabled,
+.noUiSliderLeft.disabled.connect.lower a {
+	background: #ccc;
+	box-shadow: none;
+}
+.noUiSliderLeft div {
+	height: 100px;
+	border-radius: 3px;
+	background:url("../images/drag_knob.svg") no-repeat center center;
+	background-size:15%;
+	background-position-x: 92px;	
+}
+.noUiSliderLeft.disabled div {
+	background: transparent;
+}
+.noUiSliderLeft.vertical {
+	width: 13%;
+	height: 45.5%;
+}
+.noUiSliderLeft.vertical div {
+	/*margin: -50px -60px 0 -5px;*/		
+	margin: -55px -35px 0px -35px;
+}
+
+/*********RIGHT*******/
+	
+.noUiSliderRight,
+.noUiSliderRight * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	display: block;
+	cursor: default;
+}
+.noUiSliderRight {
+	position: absolute;
+	left: 86.5%;
+	top: 14.5%;
+}
+.noUiSliderRight a {
+	position: absolute;
+	z-index: 0 !important;
+}
+.noUiSliderRight a:nth-child(2) {
+	background: inherit !important;
+}
+.noUiSliderRight.vertical a {
+	width: 100%;
+	bottom: 0px;
+}
+.noUiSliderRight.horizontal a {
+	height: 100%;
+	right: 0;
+}
+.noUiSliderRight.connect a,
+.noUiSliderRight.connect.lower {
+	background: url("../images/temp_bar_on_right.svg") no-repeat 10.5px 5px;
+	background-size: 75%;
+}
+.noUiSliderRight.disabled,
+.noUiSliderRight.disabled.connect.lower a {
+	background: #ccc;
+	box-shadow: none;
+}
+.noUiSliderRight div {
+	height: 100px;
+	border-radius: 3px;
+	background:url("/images/drag_knob.svg") no-repeat left center;
+	background-size:15%;
+	background-position-x: 5px;				
+}
+.noUiSliderRight.disabled div {
+	background: transparent;
+}
+.noUiSliderRight.vertical {
+	width: 13%;
+	height: 45.5%;
+}
+.noUiSliderRight.vertical div {
+	/*margin: -50px -60px 0 -1px;*/
+	margin: -55px -55px 0px -4px;
+}
+	
+/*********FAN*******/
+	
+.noUiSliderFan,
+.noUiSliderFan * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	display: block;
+	cursor: default;
+}
+.noUiSliderFan {
+	position: absolute;
+	left: 11.8em;
+	top: 35.5em;
+	/* top: 63.2%; */
+	height: 12%;
+}
+.noUiSliderFan a {
+	position: absolute;
+	z-index: 1;
+}
+.noUiSliderFan a:nth-child(2) {
+	background: inherit !important;
+}
+.noUiSliderFan.vertical a {
+	width: 100%;
+	bottom: 0;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+.noUiSliderFan:before,
+body.TOUCH,
+	.noUiSliderFan div {
+		-ms-touch-action: none;
+	}
+	.noUiSliderFan:before {
+		display: block;
+		position: absolute;
+		width: 150%;
+		left: -25%;
+		height: 400%;
+		top: -150%;
+		content: "";
+		z-index: -1;
+	}
+	.noUiSliderFan.vertical:before {
+		width: 400%;
+		left: -150%;
+		height: 150%;
+		top: -25%;
+	}
+}
+.noUiSliderFan {
+	/*border: 1px solid #908d84;*/
+	border-radius: 3px;
+}
+.noUiSliderFan.connect a,
+.noUiSliderFan.connect.lower {
+	/*background: #b2a98f;*/
+	/*background:url("/images/temp_bar_on_right.svg") no-repeat right bottom;	*/
+	background-size:85.9%;
+}
+.noUiSliderFan,
+.noUiSliderFan.connect.lower a {	
+	/*background: #d9d7cb;*/
+	/*box-shadow: inset 0px 1px 7px #b6b4a8;*/
+}
+.noUiSliderFan.disabled,
+.noUiSliderFan.disabled.connect.lower a {
+	background: #ccc;
+	box-shadow: none;
+}
+.noUiSliderFan div {
+	width:80px;
+	height: 100%;
+	border-radius: 3px;
+	background: #efefe7;
+	background:url("/images/drag_knob.svg") no-repeat center bottom;
+	background-size:26%;						
+}
+.noUiSliderFan.disabled div {
+	background: transparent;
+}
+.noUiSliderFan.horizontal {
+	width: 42.5%;
+	height: 4.5%;
+}
+.noUiSliderFan.horizontal a {
+	height: 33%;
+	right: 0;
+}
+.noUiSliderFan.horizontal div {
+	margin: 0 0 0 -40px;
+}
+
+.noUiSliderFan{
+	position:absolute;
+	left:33%;
+	top: 70.25%;
+	height:12%;
+}
+
+
+/*end UI slider stuff*/

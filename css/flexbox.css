@@ -1,0 +1,53 @@
+/******************************
+Flexbox Layout
+*******************************/
+
+#base, #app {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+#base {
+  justify-content: space-between;
+}
+
+#app {
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+@media all and (min-width: 640px) {
+  #base, #app {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media all and (min-width: 1030px) {
+  #app {
+    -webkit-flex: none;
+    flex: none;
+  }
+}
+
+
+body {
+  margin: 0;
+  background-size: cover;
+}
+
+#base {
+  padding: 20px 0;
+  margin: 0 auto;
+}
+
+@media all and (min-width: 1030px) {
+  #base {
+    width: 1030px;
+    min-width: 768px;
+  }
+}
