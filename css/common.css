@@ -184,8 +184,10 @@ section {
 
 #base {
   display: flex;
+  display: -webkit-flex;
   flex: 1;
   flex-direction: column;
+  -webkit-flex-direction: column;
   justify-content: space-between;
   position: relative;
   height: inherit;
@@ -252,7 +254,11 @@ section {
 #app {
   display: flex;
   flex: 1;
+  -webkit-flex: 1;
   flex-direction: column;
+  justify-content: space-around;
+  -webkit-justify-content: space-around;
+
   background-color: transparent;
   position: relative;
 }
@@ -1534,4 +1540,3 @@ ul, ol {
   align-items: center;
   justify-content: center;
 }
-
