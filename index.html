@@ -13,6 +13,8 @@
 		<title>DNA_HVAC</title>
 
 		<link rel="stylesheet" href="./css/common.css"/>
+		<link rel="stylesheet" href="./css/font-awesome/css/font-awesome.css"/>
+		
 
 		<script type="text/javascript" src="./js/jquery-1.8.2.js"></script>
 		<!-- <script type="text/javascript" src="./DNA_common/js/init.js"></script> -->
@@ -21,17 +23,22 @@
 		<script type="text/javascript" src="./js/main.js"></script>
 
 
+
 		<script type="text/javascript">
 			if((navigator.userAgent.match(/iPad/i))) {
 			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC_ipad.css\" charset=\"utf-8\" \/>");
-			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/flexbox.css\" charset=\"utf-8\" \/>");
 			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-768.css\" charset=\"utf-8\" \/>");
 			document.write("<meta name=\"viewport\" content=width=768px, height=1024px, minimum-scale=1.0, maximum-scale=1.0  \/>");
 			}
-			else if(navigator.userAgent.match(/iPhone/i && /Android/i)) {
+			else if(navigator.userAgent.match(/iPhone/i)) {
 			document.write("<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" \/>");
 			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC_iphone.css\" charset=\"utf-8\" \/>");
-			/*document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/flexbox.css\" charset=\"utf-8\" \/>");*/
+			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-720.css\" charset=\"utf-8\" \/>");
+			document.write("<meta name=\"viewport\" content=\'width=720, height=1080, user-scalable=no\' \/>");
+			}
+			else if(navigator.userAgent.match(/Android/i)) {
+			document.write("<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" \/>");
+			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC_iphone.css\" charset=\"utf-8\" \/>");
 			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-720.css\" charset=\"utf-8\" \/>");
 			document.write("<meta name=\"viewport\" content=\'width=720, height=1080, user-scalable=no\' \/>");
 			}
@@ -42,15 +49,65 @@
 			document.write("<meta name=\"viewport\" content=\'width=768, height=1024, user-scalable=no\' \/>");
 			}
 		</script>
+
+    <script>
+    $(document).ready(function(){
+		  function showPhoneSetting(){
+		    $("#settings").show();
+		    $("#phone_input").show();
+
+
+		    $("#phone").val(localStorage["jlrPhone"]);
+		    $("#password_input").hide();
+			}
+
+       $(".fa").click(function(ev){
+     			console.log("Ya");
+           /*clearSettings();*/
+           showPhoneSetting();
+       });
+
+
+        $("#setPhone").click(function(ev){
+            var phone = $("#phone").val();
+            setPhone(phone);
+            showVehicleSelect();
+        });
+
+        $('#setVinAndPassword').click(function(ev){
+            setVin();
+        });
+
+        $("form").submit(function(){return false;});
+
+    });
+</script>
+
 	</head>
 
 	<body>
 		<div id="base">
-			<!-- <div id="topBar"></div> -->
 			<div id="app">
-				<!-- <div id="clockElement"></div> -->
-				<!-- BEGIN HTML ELEMENTS -->
 				<div class="flex-item">
+					
+					<div class="fa fa-gear fa-2x"> </div>
+
+          <div id="settings" class="hidden">
+					  <form id="phone_input">							                  
+							<label for=""><h2>Enter ID</h2></label>							                  
+							<input id="phone" class="text-input" size="45" placeholder="ID or VIN number">				                  
+							<button id="setPhone" class="button-blue">submit</button>
+          	</form>
+
+            <form id="password_input" class="hidden" onsubmit="return false;">
+              <label for="">ENTER VIN NUMBER</label>
+              <input id="vin" class="text-input">
+              <label for="">ENTER PASSWORD</label>
+              <input id="password" class="text-input">
+              <button id="setVinAndPassword" class="button-blue">submit</button>
+            </form>
+          </div>
+
 					<div class="static_parts_bg"></div>		
 					<div id="hazard_btn" class="hazard_btn"></div>
 					<div class="climate_labels">

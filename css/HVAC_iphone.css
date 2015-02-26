@@ -458,66 +458,6 @@ h6, .label {
 	background: url('../images/jlr_logo_color.png') no-repeat center !important;
 }
 
-#settings {
-  background: rgba(0,0,0,0.5);
-	width: 100%;
-  /*z-index: 20;*/
-  display:none;
-}
-
-#overlay {
-	position: fixed; 
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: #000;
-	opacity: 0.8;
-	/*z-index: 19;*/
-	display: none;
-}
-
-#inputBox	{
-	left: 12%;
-	top: 70px; /*needs to be at least this high for the keyboard*/
-	width: 550px;
-	background: rgba(0,0,0,0.8);
-	/*z-index: 20;*/
-	display: none;
-	text-align: center;
-	padding-bottom: 5%;
-}
-
-form {
-	position: relative;
-	top:15%;
-	margin: 0 auto;
-	width: 50%;
-	background-color: rgba(0,0,0,0.8);
-	padding: 2%;
-	padding-bottom: 4%;
-}
-
-.text {
-	padding: 30px 0;
-	text-align: right;
-}
-
-.textBox {
-	padding-left: 1%;
-	margin: 1% 0 4% 2%;
-	border: none;
-	background-color: #fff;
-	color: #606060;
-	font-weight: bold;
-	font-family: sans-serif, "Arial";
-	font-size: 1.5rem;
-}
-
-#setupForm	{
-	display:block;
-}
-
 #resultMessage	{
 	display:none;
 }
@@ -537,104 +477,53 @@ form {
 	line-height: 1.5;
 	text-align: left;
 }
-
-.settingsIcon	{
-	background: url('../images/settings_icon.png') no-repeat;
+.fa {
 	position: absolute;
-	left: 84%;
-	top: 1.5%;
-	width: 67px;
-	height: 67px;
+  color: #FE9C00;
+	right: 2.5%;
+	top: 2%;
 }
 
-.labelBox	{
-	float: left;
-	padding: 15px 20px;
+#settings {
+	z-index: 2;
+	position: fixed;
+	top: 0;
+	height: 100%;
+	width: 100%;
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center;
+	-webkit-justify-content: center; 
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-
-.inputNumberBox	{
-	float: left;
-	margin-top: 25px;
-	width: 350px;
+#settings > label {
+	font-size: 3em;
 }
-
-.inputNumber	{
-	margin-bottom: 20px;
-	width: 215px;
-	height: 75px;
-	line-height: 75px;
-	padding-right: 90px;
-	padding-left: 30px;
+form {
+	max-width: 90%;
+	background-color: #222;
+	color: #fe9c00;
+	padding: 3%;
+}
+button {
+	margin: 3% 0;
+}
+.text-input {
 	border: none;
-	background-color: rgb(0, 0, 0);
-	background-color: rgba(0, 0, 0, 0.2);
+	max-width: 90%;
+	padding: 3%;
+	margin: 2% 0;
 }
-
-.inputNumber:focus {
-	outline: none;
-}
-
-.inputNumberBox .deleteButton {
-	display: inline-block;
-	vertical-align: top;
-	margin: 18px 0 0 -73px;
-	padding: 0;
-	width: 55px;
-	height: 36px;
-	background-position: center center;
-	background-repeat: no-repeat;
-	cursor: pointer;
-}
-
-.loadingSpinnerHistory {
-	top:130px;
-	width:100%;
-	height:100%;
-}
-
-.submitButton {
-	height: 43px;
-	margin: 5%;
-	background-color: rgba(58, 174, 255, 0.3);
-	box-shadow: 0 0 2px 2px #1DA2FF inset;
-	display: inline-block;
-	text-align: center;
-	padding: 0 20px;
-}
-
-#submit, #cancel {
-	background: none;
-	border: none;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 28px;
-	color: rgba(255, 255, 255, 1.0);	
-	line-height: 43px;
-}
-
-.setup {
-	position: absolute;
-	left: 82%;
-	top: 115px;
-	width: 13%;
-	background-color: rgba(58, 174, 255, 0.3);
-	box-shadow: 0 0 2px 2px #1DA2FF inset;
-	text-align: center;
-	padding: 0 20px;
-}
-
-#setup {
-	background: none;
-	border: none;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 22px;
-	color: rgba(255, 255, 255, 1.0);
-	line-height: 38px;
-}
-
-/* end of buttons from settings.css */
-
 
 /*severe weather alert box*/
 .weather-alert {
@@ -646,14 +535,14 @@ form {
 	overflow-x: auto;
 	touch-action: pan-y;
 	z-index: 1;
-	max-height: 800px;
-	width: 600px;
 	background-color: #222;	
-	top: 50%;
-	left: 50%;
-	position: fixed;	
-	transform: translate(-50%, -50%);
 	padding: 20px 20px 20px 30px;
+	width: 90%;
+	max-height: 90%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	position: fixed;
+	left: 50%;
 }
 .weather-alert > .close-button {
 	padding: 0;
