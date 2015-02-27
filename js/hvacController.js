@@ -215,10 +215,9 @@ function getTargetTemperatureSliderValue(temperature) {
  * @param newStatus {Integer} a new AirflowDirection status value
  */
 function setAirFlowDirectionStatus(newStatus) {
-	"use strict";
-	//carIndicator.setStatus("airflowDirection", newStatus);
-	//carIndicator.setStatus("FLHSDistrCmd", newStatus);
-	//carIndicator.setStatus("FRHSDistrCmd", newStatus);
+	hvacController.prototype.status.airflowDirection = newStatus;
+	hvacController.prototype.status.FLHSDistrCmd = newStatus;
+	hvacController.prototype.status.FRHSDistrCmd = newStatus;
 }
 
 /**
@@ -526,39 +525,50 @@ hvacController.prototype.initButtons = function () {
 	$("#fan_control_ac").bind('click', function () {
 		//carIndicator.setStatus("Fan", !carIndicator.status.fan);
 		//carIndicator.setStatus("ACCommand", !carIndicator.status.fan);
+		hvacController.prototype.status.fan = !hvacController.prototype.status.fan;
+		hvacController.prototype.status
 	});
 	// AUTO AC
 	$("#fan_control_auto").bind('click', function () {
 		if (!$("#fan_control_auto").hasClass("on")) {
-			//autoACStatus.fanSpeed = carIndicator.status.fanSpeed;
-			//autoACStatus.airflowDirection = carIndicator.status.airflowDirection;
-			//autoACStatus.fan = carIndicator.status.fan;
-			//autoACStatus.airRecirculation = carIndicator.status.airRecirculation;
-			//autoACStatus.targetTemperatureRight = carIndicator.status.targetTemperatureRight;
-			//autoACStatus.targetTemperatureLeft = carIndicator.status.targetTemperatureLeft;
-			//autoACStatus.maxDefrost = $("#defrost_max_btn").hasClass("on") ? true : false;
+			
+			autoACStatus.fanSpeed = hvacController.prototype.status.fanSpeed;
+			autoACStatus.airflowDirection = hvacController.prototype.status.airflowDirection;
+			autoACStatus.fan = hvacController.prototype.status.fan;
+			autoACStatus.airRecirculation = hvacController.prototype.status.airRecirculation;
+			autoACStatus.targetTemperatureRight = hvacController.prototype.status.targetTemperatureRight;
+			autoACStatus.targetTemperatureLeft = hvacController.prototype.status.targetTemperatureLeft;
+			autoACStatus.maxDefrost = $("#defrost_max_btn").hasClass("on") ? true : false;
 
 			if (autoACStatus.maxDefrost) {
 				$("#defrost_max_btn").removeClass("on");
 			}
 
 			$("#fan_control_auto").addClass("on");
-
-			//carIndicator.setStatus("fanSpeed", 0);
+			hvacController.prototype.status.fanSpeed = 0;
+			hvacController.prototype.onFanSpeedChanged(0);
 
 			setAirFlowDirectionStatus(0);
+			hvacController.prototype.status.Fan = true
+			hvacController.prototype.status.ACComand = true;
 
+			hvacController.prototype.onFanChanged(true);
 			//carIndicator.setStatus("Fan", true);
 			//carIndicator.setStatus("ACCommand", true);
 
 			//carIndicator.setStatus("airRecirculation", false);
 			//carIndicator.setStatus("RecircReq", 0);
+			hvacController.prototype.status.airRecirculation = false;
+			hvacController.prototype.status.RecircReq = 0;
 
 			if (autoACStatus.targetTemperatureRight < 16 || autoACStatus.targetTemperatureRight > 28) {
+				hvacController.prototype.onTargetTemperatureRightChanged(22);
+
 				//carIndicator.setStatus("targetTemperatureRight", 22);
 				//carIndicator.setStatus("FrontTSetRightCmd", 22);
 			}
 			if (autoACStatus.targetTemperatureLeft < 16 || autoACStatus.targetTemperatureLeft > 28) {
+				hvacController.prototype.onTargetTemperatureLeftChanged(22);
 				//carIndicator.setStatus("targetTemperatureLeft", 22);
 				//carIndicator.setStatus("FrontTSetLeftCmd", 22);
 			}
@@ -570,6 +580,7 @@ hvacController.prototype.initButtons = function () {
 
 			setAirFlowDirectionStatus(autoACStatus.airflowDirection);
 
+			
 			//carIndicator.setStatus("Fan", autoACStatus.fan);
 			//carIndicator.setStatus("ACCommand", autoACStatus.fan);
 
@@ -646,8 +657,8 @@ hvacController.prototype.initButtons = function () {
 	});
 	// AirflowDirection - FloorDuct - 1 (FOOT)
 	$("#fan_dir_down_btn").bind('click', function () {
-		//var currentStatus = carIndicator.status.airflowDirection;
-		if ((currentStatus >= 0) && (currentStatus <= 7) && (carIndicator.status.fanSpeed !== 0)) {
+		var currentStatus = hvacController.prototype.status.airflowDirection;
+		if ((currentStatus >= 0) && (currentStatus <= 7) && (hvacController.prototype.status.fanSpeed !== 0)) {
 			var newStatus = changeAirflowDirectionStatus("#fan_dir_down_btn", currentStatus, 1);
 			setAirFlowDirectionStatus(newStatus);
 		}
