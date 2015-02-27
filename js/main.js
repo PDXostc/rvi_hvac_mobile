@@ -90,13 +90,7 @@ var init_hvac = function () {
     if(!hvacIndicator)
     {
         hvacIndicator = new hvacController();
-        
-        /*
-
-        if(!carIndicator)
-            $(document).on("carIndicatorReady", setup_ui);
-        else */
-            setup_ui();
+        setup_ui();
     }
 };
 
@@ -110,18 +104,20 @@ function setup_ui() {
 	    connect : "upper",
 	    orientation : "vertical",
 	    slide : function() {
-		if ($("#defrost_max_btn").hasClass("on")) {
-		    switch ($(this).val()) {
-		    case 0:
-			$(this).val(1);
-			break;
-		    case 14:
-			$(this).val(13);
-			break;
-		    }
-		}
-		//carIndicator.setStatus("targetTemperatureLeft", ($(this).val() + 29) - ($(this).val() * 2));
-		//carIndicator.setStatus("FrontTSetLeftCmd", ($(this).val() + 29) - ($(this).val() * 2));
+			if ($("#defrost_max_btn").hasClass("on")) {
+			    switch ($(this).val()) {
+			    case 0:
+				$(this).val(1);
+				break;
+			    case 14:
+				$(this).val(13);
+				break;
+			    }
+			}
+
+			var newVal = ($(this).val() + 29) - ($(this).val() * 2);
+			hvacIndicator.status.targetTemperatureLeft = newVal;
+			hvacIndicator.onTargetTemperatureLeftChanged(newVal);
 	    }
 	});
 
@@ -133,8 +129,10 @@ function setup_ui() {
 	    connect : "upper",
 	    orientation : "vertical",
 	    slide : function() {
-		//carIndicator.setStatus("targetTemperatureRight", ($(this).val() + 29) - ($(this).val() * 2));
-		//carIndicator.setStatus("FrontTSetRightCmd", ($(this).val() + 29) - ($(this).val() * 2));
+		
+			var newVal = ($(this).val() + 29) - ($(this).val() * 2);
+			hvacIndicator.status.targetTemperatureRight = newVal;
+			hvacIndicator.onTargetTemperatureRightChanged(newVal);
 	    }
 	});
 
@@ -146,8 +144,9 @@ function setup_ui() {
 	    connect : "upper",
 	    orientation : "horizontal",
 	    slide : function() {
-		//carIndicator.setStatus("fanSpeed", $(this).val());
-		//carIndicator.setStatus("FrontBlwrSpeedCmd", ($(this).val()));
+			hvacIndicator.status.fanSpeed = $(this).val();
+	    	hvacIndicator.onFanSpeedChanged($(this).val());
+
 	    }
 	});
 /*
@@ -198,56 +197,3 @@ function setup_ui() {
  * @static
  **/
 $(document).ready(init_hvac);
-
-/**
- * Applies selected theme to application icons 
- * @method setThemeImageColor
- * @static
- **/
-function setThemeImageColor() {
-	var imageSource;
-	$('body').find('img').each(function() {
-		var self = this;
-		imageSource = $(this).attr('src');
-
-	    if (typeof(imageSource) !== 'undefined' && $(this.parentElement).hasClass('themeImage') == false) {
-	        console.log(imageSource);
-
-	        var img = new Image();
-	        var ctx = document.createElement('canvas').getContext('2d');
-
-	        img.onload = function () {
-	            var w = ctx.canvas.width = img.width;
-	            var h = ctx.canvas.height = img.height;
-	            ctx.fillStyle = ThemeKeyColor;
-	            ctx.fillRect(0, 0, w, h);
-	            ctx.globalCompositeOperation = 'destination-in';
-	            ctx.drawImage(img, 0, 0);
-
-	            $(self).attr('src', ctx.canvas.toDataURL());
-	            $(self).hide(0, function() { $(self).show();});
-	        };
-
-	        img.src = imageSource;
-	    }
-	});
-}
-
-function setupSpeechRecognition() {
-	console.log("Store setupSpeechRecognition");
-	Speech.addVoiceRecognitionListener({
-		onapplicationinstall : function() {
-			console.log("Speech application install invoked");
-			if (_applicationDetail.id !== undefined) {
-				StoreLibrary.installApp(_applicationDetail.id);
-			}
-		},
-		onapplicationuninstall : function() {
-			console.log("Speech application uninstall invoked");
-			if (_applicationDetail.id !== undefined) {
-				StoreLibrary.uninstallApp(_applicationDetail.id);
-			}
-		}
-
-	});
-}
