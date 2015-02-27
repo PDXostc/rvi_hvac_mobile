@@ -36,10 +36,7 @@ html {
 }
 
 body {
-	/*font-family: "Droid Sans", sans-serif;*/
-	/*background-color: rgb(0,0,0);*/
-	/*background-image: url("/DNA_common/../images/Hex-Background.jpg");*/
-	/*display: flex;*/
+	overflow: hidden;
 	width: 720px;
 	height: 1080px;
 }
@@ -52,18 +49,6 @@ body {
 	border-color: rgb(196, 196, 196);
 	border-color: rgba(196, 196, 196, 0.5);
 }
-
-.HVACwrapper {
-	/*width: 1080px;*/
-	/*height: 1920px;*/
-	/*overflow: hidden;		*/
-	/*display: flex;*/
-	/*flex-direction: column;*/
-	/*flex-grow: 1;*/
-	/*margin: 114px 0;*/
-	/*color: rgb(196,196,196);*/
-}
-
 
 .static_parts_bg{
 	background:url("../images/static_parts_bg.svg") no-repeat;
@@ -511,18 +496,21 @@ h6, .label {
 }
 form {
 	max-width: 90%;
-	background-color: #222;
+	background-color: #444;
 	color: #fe9c00;
 	padding: 3%;
 }
 button {
 	margin: 3% 0;
+	font-size: 1.5em;
 }
 .text-input {
 	border: none;
 	max-width: 90%;
 	padding: 3%;
 	margin: 2% 0;
+	background-color: rgba(255, 255, 255, 0.8);
+	font-size: 1.5em;
 }
 
 /*severe weather alert box*/
