@@ -21,6 +21,7 @@
 		<script type="text/javascript" src="./js/jquery.nouislider.js"></script>
 		<script type="text/javascript" src="./js/hvacController.js"></script>
 		<script type="text/javascript" src="./js/main.js"></script>
+		<script type="text/javascript" src="./js/carIndicator.js"></script>
 
 
 
@@ -28,19 +29,19 @@
 			if((navigator.userAgent.match(/iPad/i))) {
 			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC_ipad.css\" charset=\"utf-8\" \/>");
 			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-768.css\" charset=\"utf-8\" \/>");
-			document.write("<meta name=\"viewport\" content=width=768px, height=1024px, minimum-scale=1.0, maximum-scale=1.0  \/>");
+			document.write("<meta name=\"viewport\" content=width=768px, height=1024px, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0  \/>");
 			}
 			else if(navigator.userAgent.match(/iPhone/i)) {
 			document.write("<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" \/>");
 			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC_iphone.css\" charset=\"utf-8\" \/>");
 			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-720.css\" charset=\"utf-8\" \/>");
-			document.write("<meta name=\"viewport\" content=\'width=720, height=1080, user-scalable=no\' \/>");
+			document.write("<meta name=\"viewport\" content=\'width=device-width, user-scalable=0\' \/>");
 			}
 			else if(navigator.userAgent.match(/Android/i)) {
 			document.write("<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" \/>");
 			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC_iphone.css\" charset=\"utf-8\" \/>");
 			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-720.css\" charset=\"utf-8\" \/>");
-			document.write("<meta name=\"viewport\" content=\'width=720, height=1080, user-scalable=no\' \/>");
+			document.write("<meta name=\"viewport\" content=\'width=720, height=1080, user-scalable=0\' \/>");
 			}
 			else
 			{
@@ -95,7 +96,7 @@
           <div id="settings" class="hidden">
 					  <form id="phone_input">							                  
 							<label for=""><h2>Enter ID</h2></label>							                  
-							<input id="phone" class="text-input" size="45" placeholder="ID or VIN number">				                  
+							<input id="phone" class="text-input" size="45" placeholder="Nickname, ID or VIN number">				                  
 							<button id="setPhone" class="button-blue">submit</button>
           	</form>
 

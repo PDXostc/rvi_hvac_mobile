@@ -33,6 +33,7 @@
 body {
 	width: 768px;
 	height: 1024px;
+	background-image: none;
 }
 
 .clearBoth {
@@ -489,7 +490,7 @@ h6, .label {
 
 form {
 	max-width: 80%;
-	background-color: #222;
+	background-color: #333;
 	color: #fe9c00;
 	padding: 3%;
 }
