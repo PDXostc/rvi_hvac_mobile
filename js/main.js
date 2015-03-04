@@ -153,7 +153,7 @@ function registerMobileServices(){
 
 	hvacServices = [
 //		{"name":"hvac/air_circ","callback":"aircirc_rcb"},
-//		{"name":"hvac/fan","callback":"fan_rcb"},
+		{"name":"hvac/fan","callback":"fan_rcb"},
 //		{"name":"hvac/fan_speed","callback":"fanspeed_rcb"},
 //		{"name":"hvac/temp_left","callback":"temp_left_rcb"},
 //		{"name":"hvac/temp_right","callback":"temp_right_rcb"},

@@ -278,6 +278,7 @@ hvacController.prototype.onFanChanged = function (newStatus) {
  */
 hvacController.prototype.onFanSpeedChanged = function (newStatus) {
 	"use strict";
+	sendRVI("hvac/fan_speed",newStatus);
 	$("#fanSpeedSlider").val(newStatus);
 	$(".fanSpeedOn").css('width', parseInt($(".noUiSliderFan.horizontal.connect").find("a").css('left'), 10));
 	if (newStatus === 0) {
@@ -285,6 +286,7 @@ hvacController.prototype.onFanSpeedChanged = function (newStatus) {
 	} else if (newStatus > 0) {
 		switchAutoACOff();
 	}
+
 };
 
 /**
@@ -631,7 +633,7 @@ hvacController.prototype.initButtons = function () {
 
 		hvacController.prototype.onSeatHeaterRightChanged(newStatus);
 		hvacController.prototype.status.SeatHeaterRight = newStatus;
-		sendRVI("hvac/seat_heat_right",status);
+		sendRVI("hvac/seat_heat_right",newStatus);
 	});
 
 	// SeatHeater - front left
