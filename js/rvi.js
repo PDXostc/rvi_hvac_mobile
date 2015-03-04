@@ -17,7 +17,7 @@ function RVI() {
     if (typeof RVI.instance === 'object') 
 	return RVI.instance
 
-    this.service_map = [];
+    this.service_map = {};
     console.log("Starting up service RVI 1");
     RVI.instance = this
     this.connect = function(address, err_cb) {
