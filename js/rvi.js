@@ -35,12 +35,12 @@ function RVI() {
 
     this.register_service = function(service, callback) {
 	// Add a leading slash if necessar
-	if (service[0] != '/')
-	    service = '/' + service;
+		if (service[0] != '/')
+	    	service = '/' + service;
 
-	Wse.start('service_edge_rpc', 'wse_register_service', [ service ]);
-	console.log("Registered RVI service: " + service);
-	this.service_map[service] = callback;
+		Wse.start('service_edge_rpc', 'wse_register_service', [ service ]);
+		console.log("Registered RVI service: " + service);
+		this.service_map[service] = callback;
     }
 
     this.send_message = function(service, timeout, payload, calling_service) {
@@ -56,20 +56,28 @@ function RVI() {
     }
 
     this.rvi_message = function()  {
-	service=arguments[0];
-	if (this.service_map[service])
-	    this.service_map[service].apply(null, arguments);
-	else
-	    console.warn("Service: " + service + " not mapped to any callback. Ignore");
-	    
-    }
+		if (this.service_map[args['service_name']]) {
+		    window[this.service_map[args['service_name']]](args);
+		}else{
+		    console.warn("Service: " + args['service_name'] + " not mapped to any callback. Ignore");
+	    }
+
+		console.log("RVI Message completed");
+	}
 }
 
 
 // "ws://10.0.0.36:1234/websession"
 function message() {
-    for (var i = 0; i < arguments.length; ++i) 
-	console.log("message arguments[" + i + "]: " + arguments[i]);
-	
-    return RVI().rvi_message.apply(RVI(),arguments);
+	args = {};
+
+    for (var i = 0; i < arguments.length; ++i) {
+    	if(i%2 == 0){
+    		args[arguments[i]] = arguments[i+1];
+    	}
+    }
+    console.log("RVI message Arguments ");
+    console.log(args);
+
+    return rvi.rvi_message.apply(rvi,arguments);
 }

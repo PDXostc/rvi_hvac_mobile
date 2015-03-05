@@ -127,7 +127,7 @@ function sendRVI(key, value){
 		return false;
 	} 
 
-    value = JSON.stringify({value:value.toString() });
+    value = JSON.stringify({value:value.toString(),sending_node:"jlr.com/backend/"+localStorage['mobileVin']+"/" });
     service = "jlr.com/vin/" + localStorage['rviVin']+"/" +key;
 
     console.log("Service:" + key);
@@ -137,7 +137,7 @@ function sendRVI(key, value){
 
 //Pass the mobile identifier to a TizenBox
 function subscribeToVin(){
-	node = "jlr.com/mobile/" + localStorage['mobileVin']+"/";
+	node = "jlr.com/backend/" + localStorage['mobileVin']+"/";
 	sendRVI("hvac/subscribe",JSON.stringify({"node":node}));
 }
 
@@ -166,7 +166,7 @@ function registerMobileServices(){
 	];
 
 	for(serviceName in hvacServices){
-		rvi.register_service(hvacServices[serviceName].name,hvacServices[serviceName].callback);
+		rvi.register_service(localStorage['mobileVin']+"/"+hvacServices[serviceName].name,hvacServices[serviceName].callback);
 		console.log("Registered callback `"+hvacServices[serviceName].callback+"` for "+hvacServices[serviceName].name);
 	}
 }
