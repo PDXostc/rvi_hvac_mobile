@@ -19,63 +19,6 @@
 *
 */
 
-function deleteItemClick(item) {
-	console.log(item.target);
-	console.log(item.data.html());
-	item.data.remove();
-}
-// Handler function invoked from the Crosswalk extension
-// when  bp.bpAsync is called.
-var callback = function(response) {
-console.log("bp callback js: Async>>> " + response);
-};
-
-function addItemClick(item) {
-	console.log('addItemClick()');
-	console.log(item);
-	console.log($("input[name='item_title']").val());
-	console.log($("textarea[name='item_description']").val());
-	console.log($("[name='item_template']").contents());
-	
-	// Capture the title and description data to be sent to the extension later.
-	var ti=$("input[name='item_title']").val();
-	var descr=$("textarea[name='item_description']").val();
-	
-	var newItemTemplate = $($("[name='item_template']").html());
-	console.log(newItemTemplate);
-	newItemTemplate.find("td[name='item_title_field']").text($("input[name='item_title']").val());
-	newItemTemplate.find("td[name='item_description_field']").text($("textarea[name='item_description']").val());
-	console.log(newItemTemplate);
-	var newItem = newItemTemplate.clone();
-	newItem.find("input[name='delete_item']").click(newItem,deleteItemClick);
-	$("tbody[name='item_list_body']").append(newItem);
-	$("form[name='add_item_form']")[0].reset();
-	
-	// Send the title and description to the extension:
-	var jsonenc = {api:"handleItem", dest:"Item Consumer", title:ti, desc:descr};
-	console.log("stringify before bp.bpAsynch is "+JSON.stringify(jsonenc));
-	bp.bpAsync(JSON.stringify(jsonenc), callback);
-}
-
-function themeErrorCB (msg) {
-    console.log("Theme Error Callback: " + msg);
-}
-
-function smallClick(item) {
-    console.log('smallClick()');
-
-    var jsonenc = {api:"setTheme", theme:"/usr/share/weekeyboard/blue_600.edj"};
-    console.log("RE: setTheme stringify: "+JSON.stringify(jsonenc));
-    wkb_client.clientSync(JSON.stringify(jsonenc), themeErrorCB);
-}
-
-function bigClick(item) {
-    console.log('bigClick()');
-
-    var jsonenc = {api:"setTheme", theme:"/usr/share/weekeyboard/blue_1080.edj"};
-    console.log("RE: setTheme stringify: "+JSON.stringify(jsonenc));
-    wkb_client.clientSync(JSON.stringify(jsonenc), themeErrorCB);
-}
 
 /**
  * Initialize application components and register button events.
@@ -87,12 +30,32 @@ var hvacIndicator;
 var init_hvac = function () {
 	console.log("init_hvac()");
 
+
+	if(localStorage['mobileVin'] == undefined){
+		localStorage['mobileVin'] = generateID(10);
+	}
+
     if(!hvacIndicator)
     {
         hvacIndicator = new hvacController();
         setup_ui();
     }
+
+    rvi = new RVI();
+    rvi.connect("ws://rvi1.nginfotpdx.net:8808/websession",function(e){console.log(e)});
+	registerMobileServices();
 };
+
+//Generate a random Id for use with this mobile implementation. Will be stored in localStorage.
+function generateID(len){
+	var valid = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	var newId = "";
+	for(var i=0; i < len; i++){
+		newId += valid.charAt(Math.floor(Math.random() * valid.length));
+	}
+	return newId;
+}
+
 
 function setup_ui() {
     console.log("setup_ui() called!");
@@ -149,45 +112,82 @@ function setup_ui() {
 
 	    }
 	});
-/*
-    carIndicator.addListener({
-	    onAirRecirculationChanged : function(newValue) {
-		hvacIndicator.onAirRecirculationChanged(newValue);
-	    },
-	    onFanChanged : function(newValue) {
-		hvacIndicator.onFanChanged(newValue);
-	    },
-	    onFanSpeedChanged : function(newValue) {
-		hvacIndicator.onFanSpeedChanged(newValue);
-	    },
-	    onTargetTemperatureRightChanged : function(newValue) {
-		hvacIndicator.onTargetTemperatureRightChanged(newValue);
-	    },
-	    onTargetTemperatureLeftChanged : function(newValue) {
-		hvacIndicator.onTargetTemperatureLeftChanged(newValue);
-	    },
-	    onHazardChanged : function(newValue) {
-		hvacIndicator.onHazardChanged(newValue);
-		console.log("onHazardChanged: "+ newValue);
-	    },
-	    onSeatHeaterRightChanged : function(newValue) {
-		hvacIndicator.onSeatHeaterRightChanged(newValue);
-	    },
-	    onSeatHeaterLeftChanged : function(newValue) {
-		hvacIndicator.onSeatHeaterLeftChanged(newValue);
-	    },
-	    onAirflowDirectionChanged : function(newValue) {
-		hvacIndicator.onAirflowDirectionChanged(newValue);
-	    },
-	    onFrontDefrostChanged : function(newValue) {
-		hvacIndicator.onFrontDefrostChanged(newValue);
-	    },
-	    onRearDefrostChanged : function(newValue) {
-		hvacIndicator.onRearDefrostChanged(newValue);
-	    }
-	});
-*/
 }
+
+function setVin(vinValue){
+	localStorage['rviVin'] = vinValue;
+	subscribeToVin(localStorage['rviVin']);
+	return true;
+}
+
+var received = false;
+function sendRVI(key, value){
+	
+	if(localStorage['rviVin'] == undefined){
+		console.log("No rviVin defined");
+		return false;
+	} 
+
+	if(received == true){
+		received = false;
+		return;
+	}
+
+    value = JSON.stringify({value:value.toString(),sending_node:"jlr.com/backend/"+localStorage['mobileVin']+"/" });
+    service = "jlr.com/vin/" + localStorage['rviVin']+"/" +key;
+
+    console.log("Service:" + key);
+    console.log("Val: " + value );
+    rvi.send_message(service, 5000, value, key);
+}
+
+//Pass the mobile identifier to a TizenBox
+function subscribeToVin(){
+	node = "jlr.com/backend/" + localStorage['mobileVin']+"/";
+	sendRVI("hvac/subscribe",JSON.stringify({"node":node}));
+}
+
+function unsubscribeToVin(){
+	sendRVI("hvac/unsubscribe",true);
+}
+
+
+/*
+	Registers client with RVI 
+*/
+function registerMobileServices(){
+
+	hvacServices = [
+//		{"name":"hvac/air_circ","callback":"aircirc_rcb"},
+		{"name":"hvac/fan","callback":"fan_rcb"},
+//		{"name":"hvac/fan_speed","callback":"fanspeed_rcb"},
+		{"name":"hvac/temp_left","callback":"temp_left_rcb"},
+//		{"name":"hvac/temp_right","callback":"temp_right_rcb"},
+//		{"name":"hvac/hazard","callback":"hazard_rcb"},
+		{"name":"hvac/seat_heat_right","callback":"seat_heat_right_rcb"},
+		{"name":"hvac/seat_heat_left","callback":"seat_heat_left_rcb"},
+//		{"name":"hvac/airflow_direction","callback":"airflow_direction_rcb"},
+//		{"name":"hvac/defrost_rear","callback":"defrost_rear_rcb"},
+//		{"name":"hvac/defrost_front","callback":"defrost_front_rcb"}	
+	];
+
+	for(serviceName in hvacServices){
+		rvi.register_service(localStorage['mobileVin']+"/"+hvacServices[serviceName].name,hvacServices[serviceName].callback);
+		console.log("Registered callback `"+hvacServices[serviceName].callback+"` for "+hvacServices[serviceName].name);
+	}
+}
+
+
+function seat_heat_right_rcb(args){
+	//carIndicator.setStatus("seatHeaterRight", parseInt(args.value));
+	hvacController.prototype.onSeatHeaterRightChanged(Number(args['value']));
+}
+
+function seat_heat_left_rcb(args){
+	//carIndicator.setStatus("seatHeaterRight", parseInt(args.value));
+	hvacController.prototype.onSeatHeaterLeftChanged(Number(args['value']));
+}
+
 
 
 /**

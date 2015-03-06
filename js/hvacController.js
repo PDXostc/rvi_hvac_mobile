@@ -278,6 +278,7 @@ hvacController.prototype.onFanChanged = function (newStatus) {
  */
 hvacController.prototype.onFanSpeedChanged = function (newStatus) {
 	"use strict";
+	sendRVI("hvac/fan_speed",newStatus);
 	$("#fanSpeedSlider").val(newStatus);
 	$(".fanSpeedOn").css('width', parseInt($(".noUiSliderFan.horizontal.connect").find("a").css('left'), 10));
 	if (newStatus === 0) {
@@ -285,6 +286,7 @@ hvacController.prototype.onFanSpeedChanged = function (newStatus) {
 	} else if (newStatus > 0) {
 		switchAutoACOff();
 	}
+
 };
 
 /**
@@ -300,6 +302,7 @@ hvacController.prototype.onFanSpeedChanged = function (newStatus) {
  */
 hvacController.prototype.onTargetTemperatureRightChanged = function (newStatus) {
 	"use strict";
+	sendRVI("hvac/temp_right",newStatus);
 	var value = getTargetTemperatureSliderValue(newStatus);
 	$("#noUiSliderRight").val(value);
 	$(".scrollable.right").find(".temperature").stop(true, true).animate({
@@ -320,6 +323,7 @@ hvacController.prototype.onTargetTemperatureRightChanged = function (newStatus) 
  */
 hvacController.prototype.onTargetTemperatureLeftChanged = function (newStatus) {
 	"use strict";
+	sendRVI("hvac/temp_left",newStatus);
 	var value = getTargetTemperatureSliderValue(newStatus);
 	$("#noUiSliderLeft").val(value);
 	$(".scrollable.left").find(".temperature").stop(true, true).animate({
@@ -365,7 +369,7 @@ hvacController.prototype.onHazardChanged = function (newStatus) {
  * @param status {Integer} new status of Right SeatHeater
  */
 hvacController.prototype.onSeatHeaterRightChanged = function (status) {
-	"use strict";
+	"use strict";	
 	toggleSeatHeaterButton(status, "#right_seat_btn_stage");
 };
 
@@ -382,6 +386,7 @@ hvacController.prototype.onSeatHeaterRightChanged = function (status) {
  */
 hvacController.prototype.onSeatHeaterLeftChanged = function (status) {
 	"use strict";
+	sendRVI("hvac/seat_heat_left",status);
 	toggleSeatHeaterButton(status, "#left_seat_btn_stage");
 };
 
@@ -628,6 +633,7 @@ hvacController.prototype.initButtons = function () {
 
 		hvacController.prototype.onSeatHeaterRightChanged(newStatus);
 		hvacController.prototype.status.SeatHeaterRight = newStatus;
+		sendRVI("hvac/seat_heat_right",newStatus);
 	});
 
 	// SeatHeater - front left
