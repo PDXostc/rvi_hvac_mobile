@@ -116,16 +116,22 @@ function setup_ui() {
 
 function setVin(vinValue){
 	localStorage['rviVin'] = vinValue;
+	subscribeToVin(localStorage['rviVin']);
 	return true;
 }
 
-
+var received = false;
 function sendRVI(key, value){
 	
 	if(localStorage['rviVin'] == undefined){
 		console.log("No rviVin defined");
 		return false;
 	} 
+
+	if(received == true){
+		received = false;
+		return;
+	}
 
     value = JSON.stringify({value:value.toString(),sending_node:"jlr.com/backend/"+localStorage['mobileVin']+"/" });
     service = "jlr.com/vin/" + localStorage['rviVin']+"/" +key;
@@ -155,7 +161,7 @@ function registerMobileServices(){
 //		{"name":"hvac/air_circ","callback":"aircirc_rcb"},
 		{"name":"hvac/fan","callback":"fan_rcb"},
 //		{"name":"hvac/fan_speed","callback":"fanspeed_rcb"},
-//		{"name":"hvac/temp_left","callback":"temp_left_rcb"},
+		{"name":"hvac/temp_left","callback":"temp_left_rcb"},
 //		{"name":"hvac/temp_right","callback":"temp_right_rcb"},
 //		{"name":"hvac/hazard","callback":"hazard_rcb"},
 		{"name":"hvac/seat_heat_right","callback":"seat_heat_right_rcb"},
@@ -174,12 +180,12 @@ function registerMobileServices(){
 
 function seat_heat_right_rcb(args){
 	//carIndicator.setStatus("seatHeaterRight", parseInt(args.value));
-	hvacController.prototype.onSeatHeaterRightChanged(args['value']);
+	hvacController.prototype.onSeatHeaterRightChanged(Number(args['value']));
 }
 
 function seat_heat_left_rcb(args){
 	//carIndicator.setStatus("seatHeaterRight", parseInt(args.value));
-	hvacController.prototype.onSeatHeaterLeftChanged(args['value']);
+	hvacController.prototype.onSeatHeaterLeftChanged(Number(args['value']));
 }
 
 

@@ -56,6 +56,7 @@ function RVI() {
     }
 
     this.rvi_message = function()  {
+    	received = true;
 		if (this.service_map[args['service_name']]) {
 		    window[this.service_map[args['service_name']]](args);
 		}else{
