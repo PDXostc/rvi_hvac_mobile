@@ -1,7 +1,5 @@
-# rvi_hvac_mobile
 RVI - HVAC integration
-
-This application provides a remote interface for the Tizen IVI RVI HVAC app.
+Provides a remote interface for the Tizen IVI RVI HVAC app.
 
 Use
 ===
@@ -15,4 +13,3 @@ ToDo
 ====
 * There is currently no way to unsubscribe from an IVI
 * Fan Direction, AC, Auto, and Air Circulation buttons do not currently function.
-
