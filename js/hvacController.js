@@ -278,7 +278,7 @@ hvacController.prototype.onFanChanged = function (newStatus) {
  */
 hvacController.prototype.onFanSpeedChanged = function (newStatus) {
 	"use strict";
-	sendRVI("hvac/fan_speed",newStatus);
+	
 	$("#fanSpeedSlider").val(newStatus);
 	$(".fanSpeedOn").css('width', parseInt($(".noUiSliderFan.horizontal.connect").find("a").css('left'), 10));
 	if (newStatus === 0) {
@@ -286,7 +286,7 @@ hvacController.prototype.onFanSpeedChanged = function (newStatus) {
 	} else if (newStatus > 0) {
 		switchAutoACOff();
 	}
-
+	hvacController.prototype.status.fanSpeed = newStatus;
 };
 
 /**
@@ -302,12 +302,12 @@ hvacController.prototype.onFanSpeedChanged = function (newStatus) {
  */
 hvacController.prototype.onTargetTemperatureRightChanged = function (newStatus) {
 	"use strict";
-	sendRVI("hvac/temp_right",newStatus);
 	var value = getTargetTemperatureSliderValue(newStatus);
 	$("#noUiSliderRight").val(value);
 	$(".scrollable.right").find(".temperature").stop(true, true).animate({
 		"top": (-433 + (value * 33) + '%')
 	});
+	hvacController.prototype.status.targetTemperatureRight = value;
 };
 
 /**
@@ -323,12 +323,12 @@ hvacController.prototype.onTargetTemperatureRightChanged = function (newStatus) 
  */
 hvacController.prototype.onTargetTemperatureLeftChanged = function (newStatus) {
 	"use strict";
-	sendRVI("hvac/temp_left",newStatus);
 	var value = getTargetTemperatureSliderValue(newStatus);
 	$("#noUiSliderLeft").val(value);
 	$(".scrollable.left").find(".temperature").stop(true, true).animate({
 		"top": (-433 + (value * 33) + '%')
 	});
+	hvacController.prototype.status.targetTemperatureLeft = value;
 };
 
 /**
@@ -370,6 +370,7 @@ hvacController.prototype.onHazardChanged = function (newStatus) {
  */
 hvacController.prototype.onSeatHeaterRightChanged = function (status) {
 	"use strict";	
+	hvacController.prototype.status.SeatHeaterRight = status;
 	toggleSeatHeaterButton(status, "#right_seat_btn_stage");
 };
 
@@ -386,7 +387,7 @@ hvacController.prototype.onSeatHeaterRightChanged = function (status) {
  */
 hvacController.prototype.onSeatHeaterLeftChanged = function (status) {
 	"use strict";
-	sendRVI("hvac/seat_heat_left",status);
+	hvacController.prototype.status.SeatHeaterLeft = status;
 	toggleSeatHeaterButton(status, "#left_seat_btn_stage");
 };
 
@@ -632,7 +633,6 @@ hvacController.prototype.initButtons = function () {
 		if (!newStatus) newStatus = 0;
 
 		hvacController.prototype.onSeatHeaterRightChanged(newStatus);
-		hvacController.prototype.status.SeatHeaterRight = newStatus;
 		sendRVI("hvac/seat_heat_right",newStatus);
 	});
 
@@ -659,7 +659,7 @@ hvacController.prototype.initButtons = function () {
 		if (!newStatus) newStatus = 0;
 		
 		hvacController.prototype.onSeatHeaterLeftChanged(newStatus);
-		hvacController.prototype.status.SeatHeaterLeft = newStatus;
+		sendRVI("hvac/seat_heat_left",newStatus);
 	});
 	// AirflowDirection - FloorDuct - 1 (FOOT)
 	$("#fan_dir_down_btn").bind('click', function () {

@@ -79,7 +79,7 @@ function setup_ui() {
 			}
 
 			var newVal = ($(this).val() + 29) - ($(this).val() * 2);
-			hvacIndicator.status.targetTemperatureLeft = newVal;
+			sendRVI("hvac/temp_left",newVal);
 			hvacIndicator.onTargetTemperatureLeftChanged(newVal);
 	    }
 	});
@@ -94,7 +94,7 @@ function setup_ui() {
 	    slide : function() {
 		
 			var newVal = ($(this).val() + 29) - ($(this).val() * 2);
-			hvacIndicator.status.targetTemperatureRight = newVal;
+			sendRVI("hvac/temp_right",newVal);
 			hvacIndicator.onTargetTemperatureRightChanged(newVal);
 	    }
 	});
@@ -107,7 +107,7 @@ function setup_ui() {
 	    connect : "upper",
 	    orientation : "horizontal",
 	    slide : function() {
-			hvacIndicator.status.fanSpeed = $(this).val();
+			sendRVI("hvac/fan_speed",$(this).val());	
 	    	hvacIndicator.onFanSpeedChanged($(this).val());
 
 	    }
@@ -120,18 +120,12 @@ function setVin(vinValue){
 	return true;
 }
 
-var received = false;
 function sendRVI(key, value){
 	
 	if(localStorage['rviVin'] == undefined){
 		console.log("No rviVin defined");
 		return false;
 	} 
-
-	if(received == true){
-		received = false;
-		return;
-	}
 
     value = JSON.stringify({value:value.toString(),sending_node:"jlr.com/backend/"+localStorage['mobileVin']+"/" });
     service = "jlr.com/vin/" + localStorage['rviVin']+"/" +key;
@@ -160,9 +154,9 @@ function registerMobileServices(){
 	hvacServices = [
 //		{"name":"hvac/air_circ","callback":"aircirc_rcb"},
 		{"name":"hvac/fan","callback":"fan_rcb"},
-//		{"name":"hvac/fan_speed","callback":"fanspeed_rcb"},
+		{"name":"hvac/fan_speed","callback":"fanspeed_rcb"},
 		{"name":"hvac/temp_left","callback":"temp_left_rcb"},
-//		{"name":"hvac/temp_right","callback":"temp_right_rcb"},
+		{"name":"hvac/temp_right","callback":"temp_right_rcb"},
 //		{"name":"hvac/hazard","callback":"hazard_rcb"},
 		{"name":"hvac/seat_heat_right","callback":"seat_heat_right_rcb"},
 		{"name":"hvac/seat_heat_left","callback":"seat_heat_left_rcb"},
@@ -177,15 +171,31 @@ function registerMobileServices(){
 	}
 }
 
+function fanspeed_rcb(args){
+	hvacIndicator.onFanSpeedChanged(Number(args['value']));
+}
+
+
+function temp_left_rcb(args){
+	//carIndicator.setStatus("seatHeaterRight", parseInt(args.value));
+	//hvacController.prototype.onSeatHeaterRightChanged(Number(args['value']));
+	hvacIndicator.onTargetTemperatureLeftChanged(Number(args['value']));
+}
+
+function temp_right_rcb(args){
+	//carIndicator.setStatus("seatHeaterRight", parseInt(args.value));
+	//hvacController.prototype.onSeatHeaterRightChanged(Number(args['value']));
+	hvacIndicator.onTargetTemperatureRightChanged(Number(args['value']));
+}
 
 function seat_heat_right_rcb(args){
 	//carIndicator.setStatus("seatHeaterRight", parseInt(args.value));
-	hvacController.prototype.onSeatHeaterRightChanged(Number(args['value']));
+	hvacIndicator.onSeatHeaterRightChanged(Number(args['value']));
 }
 
 function seat_heat_left_rcb(args){
 	//carIndicator.setStatus("seatHeaterRight", parseInt(args.value));
-	hvacController.prototype.onSeatHeaterLeftChanged(Number(args['value']));
+	hvacIndicator.onSeatHeaterLeftChanged(Number(args['value']));
 }
 
 
