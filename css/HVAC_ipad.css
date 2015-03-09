@@ -434,8 +434,16 @@ h6, .label {
 	background-size:100%;
 }		
 
-.bottomPanelLogoImg {
-	background: url('../images/jlr_logo_color.png') no-repeat center !important;
+#bottomBarLogoImg{
+	position: absolute;
+	width: 40%;
+	left: 50%;
+	bottom: 6%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.bottomBarLogo {
+	content:url('../images/jlr_logo_color.png');
 }
 
 #resultMessage	{
@@ -535,4 +543,14 @@ button {
 }
 .weather-alert > h2 {
 	font-size: 1.5em;
+}
+#bottomBarLogoImg{
+/*	width:400px;  this size stretches the logos out of proportion, doesn't work for all
+	height:100px;
+	margin: 16px 0 0 325px;*/
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 300px;
+	transform: translate(-50%, -50%);
 }
