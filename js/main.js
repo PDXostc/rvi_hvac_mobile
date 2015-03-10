@@ -203,6 +203,18 @@ function airflow_direction_rcb(args){
 	hvacIndicator.onAirflowDirectionChanged(Number(args['value']));
 }
 
+function defrost_rear_rcb(args){
+	hvacIndicator.status.rearDefrost = args['value'];
+	var val = (args['value'] == "true")?true:0;
+	hvacIndicator.onRearDefrostChanged(val);
+}
+
+function defrost_front_rcb(args){
+	hvacIndicator.status.frontDefrost = args['value'];
+	var val = (args['value'] == "true")?true:0;
+	hvacIndicator.onFrontDefrostChanged(val);
+}
+
 
 /**
  * Calls initialization fuction after document is loaded.
