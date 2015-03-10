@@ -667,22 +667,25 @@ hvacController.prototype.initButtons = function () {
 		if ((currentStatus >= 0) && (currentStatus <= 7) && (hvacController.prototype.status.fanSpeed !== 0)) {
 			var newStatus = changeAirflowDirectionStatus("#fan_dir_down_btn", currentStatus, 1);
 			setAirFlowDirectionStatus(newStatus);
+			sendRVI("hvac/airflow_direction",newStatus);
 		}
 	});
 	// AirflowDirection - Defroster - 4 (SCREEN)
 	$("#fan_dir_up_btn").bind('click', function () {
-		//var currentStatus = carIndicator.status.airflowDirection;
-		if ((currentStatus >= 0) && (currentStatus <= 7) && (carIndicator.status.fanSpeed !== 0)) {
+		var currentStatus = hvacController.prototype.status.airflowDirection;
+		if ((currentStatus >= 0) && (currentStatus <= 7) && (hvacController.prototype.status.fanSpeed !== 0)) {
 			var newStatus = changeAirflowDirectionStatus("#fan_dir_up_btn", currentStatus, 4);
 			setAirFlowDirectionStatus(newStatus);
+			sendRVI("hvac/airflow_direction",newStatus);
 		}
 	});
 	// AirflowDirection - Front - 2 (FACE)
 	$("#fan_dir_right_btn").bind('click', function () {
-		//var currentStatus = carIndicator.status.airflowDirection;
-		if ((currentStatus >= 0) && (currentStatus <= 7) && (carIndicator.status.fanSpeed !== 0)) {
+		var currentStatus = hvacController.prototype.status.airflowDirection;
+		if ((currentStatus >= 0) && (currentStatus <= 7) && (hvacController.prototype.status.fanSpeed !== 0)) {
 			var newStatus = changeAirflowDirectionStatus("#fan_dir_right_btn", currentStatus, 2);
 			setAirFlowDirectionStatus(newStatus);
+			sendRVI("hvac/airflow_direction",newStatus);
 		}
 	});
 	// Max Defrost
@@ -714,12 +717,14 @@ hvacController.prototype.initButtons = function () {
 	$("#defrost_rear_btn").bind('click', function () {
 		hvacController.prototype.status.rearDefrost = !hvacController.prototype.status.rearDefrost
 		hvacController.prototype.onRearDefrostChanged(hvacController.prototype.status.rearDefrost);
+		sendRVI("hvac/defrost_rear",hvacController.prototype.status.rearDefrost);
 	});
 	// Defrost - Front
 	$("#defrost_front_btn").bind('click', function () {
 		//Invert value
 		hvacController.prototype.status.frontDefrost = !hvacController.prototype.status.frontDefrost
 		hvacController.prototype.onFrontDefrostChanged(hvacController.prototype.status.frontDefrost);
+		sendRVI("hvac/defrost_front",hvacController.prototype.status.frontDefrost);
 	});
 };
 

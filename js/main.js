@@ -139,6 +139,7 @@ function sendRVI(key, value){
 function subscribeToVin(){
 	node = "jlr.com/backend/" + localStorage['mobileVin']+"/";
 	sendRVI("hvac/subscribe",JSON.stringify({"node":node}));
+	
 }
 
 function unsubscribeToVin(){
@@ -157,12 +158,12 @@ function registerMobileServices(){
 		{"name":"hvac/fan_speed","callback":"fanspeed_rcb"},
 		{"name":"hvac/temp_left","callback":"temp_left_rcb"},
 		{"name":"hvac/temp_right","callback":"temp_right_rcb"},
-//		{"name":"hvac/hazard","callback":"hazard_rcb"},
+		{"name":"hvac/hazard","callback":"hazard_rcb"},
 		{"name":"hvac/seat_heat_right","callback":"seat_heat_right_rcb"},
 		{"name":"hvac/seat_heat_left","callback":"seat_heat_left_rcb"},
-//		{"name":"hvac/airflow_direction","callback":"airflow_direction_rcb"},
-//		{"name":"hvac/defrost_rear","callback":"defrost_rear_rcb"},
-//		{"name":"hvac/defrost_front","callback":"defrost_front_rcb"}	
+		{"name":"hvac/airflow_direction","callback":"airflow_direction_rcb"},
+		{"name":"hvac/defrost_rear","callback":"defrost_rear_rcb"},
+		{"name":"hvac/defrost_front","callback":"defrost_front_rcb"}	
 	];
 
 	for(serviceName in hvacServices){
@@ -174,7 +175,6 @@ function registerMobileServices(){
 function fanspeed_rcb(args){
 	hvacIndicator.onFanSpeedChanged(Number(args['value']));
 }
-
 
 function temp_left_rcb(args){
 	//carIndicator.setStatus("seatHeaterRight", parseInt(args.value));
@@ -198,6 +198,10 @@ function seat_heat_left_rcb(args){
 	hvacIndicator.onSeatHeaterLeftChanged(Number(args['value']));
 }
 
+function airflow_direction_rcb(args){
+	hvacIndicator.status.airflowDirection = Number(args['value']);
+	hvacIndicator.onAirflowDirectionChanged(Number(args['value']));
+}
 
 
 /**
