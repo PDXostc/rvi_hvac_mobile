@@ -60,7 +60,7 @@ h6, .label {
 }
 /*********HAZARD BUTTON************/
 
-.hazard_btn{
+.hazard_btn {
 	width: 59%;
 	height: 10%;
 	background: url("../images/hazard_off.svg") no-repeat;
@@ -433,7 +433,9 @@ h6, .label {
 	background:url("../images/defrost_front_on.svg") no-repeat;
 	background-size:100%;
 }		
-
+.flex-item {
+	-webkit-flex: 1;
+}
 #bottomBarLogoImg{
 	position: absolute;
 	width: 40%;
@@ -480,19 +482,15 @@ h6, .label {
 	height: 100%;
 	width: 100%;
   display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-  display: -ms-flexbox; /* TWEENER - IE 10 */
   display: -webkit-flex;
   display: flex;
   -webkit-box-align: center;
   -webkit-flex-align: center;
-  -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  justify-content: center;
-	-webkit-justify-content: center; 
+  -webkit-justify-content: center;
+  justify-content: center; 
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 form {
@@ -543,14 +541,4 @@ button {
 }
 .weather-alert > h2 {
 	font-size: 1.5em;
-}
-#bottomBarLogoImg{
-/*	width:400px;  this size stretches the logos out of proportion, doesn't work for all
-	height:100px;
-	margin: 16px 0 0 325px;*/
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	width: 300px;
-	transform: translate(-50%, -50%);
 }
