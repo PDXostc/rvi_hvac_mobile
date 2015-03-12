@@ -56,35 +56,44 @@
     <script>
     $(document).ready(function(){
 
-		$(".fa").click(function(ev){
-			showPhoneSetting();
-		});
+			$(".fa").click(function(ev){
+				showPhoneSetting();
+			});
 
-		$("#setPhone").click(function(ev){
-			var phone = $("#phone").val();
-			setVin($("#rviVinInput").val());
-			hidePhoneSetting();
-		});
+			$("#setPhone").click(function(ev){
+				var phone = $("#phone").val();
+				setVin($("#rviVinInput").val());
+				hidePhoneSetting();
+			});
 
-		$('#setVinAndPassword').click(function(ev){
-			var setVinResult = setVin();
-		});
+			$('#setVinAndPassword').click(function(ev){
+				var setVinResult = setVin();
+			});
 
-		$("form").submit(function(){return false;});
+			$("form").submit(function(){return false;});
 
     });
 
+	function hideMessageModal(){
+		$("#resultMessage").addClass('hidden');
+		console.log("hideMessageModal");
+	}
+
+	function hideSettingsModal(){
+		$("#settings").addClass('hidden');
+		console.log("hideSettingsModal");
+	}
+
 	function showPhoneSetting(){
-		$("#settings").show();
-	    $("#phone_input").show();
+		$("#settings").removeClass('hidden');
+	  $("#phone_input").show();
 
-
-	    $("#rviVinInput").val(localStorage["rviVin"]);
-	    $("#password_input").hide();
+	  $("#rviVinInput").val(localStorage["rviVin"]);
+	  $("#password_input").hide();
 	}
 
 	function hidePhoneSetting(){
-	    $("#settings").hide();
+	    $("#settings").addClass('hidden');
 	    $("#phone_input").hide();
 	}
 
@@ -99,21 +108,25 @@
 					
 					<div class="fa fa-gear fa-2x"> </div>
 
-          <div id="settings" class="hidden">
-					  <form id="phone_input">							                  
-							<label for=""><h2>Enter ID</h2></label>							                  
-							<input id="rviVinInput" class="text-input" size="45" placeholder="Nickname, ID or VIN number">				                  
-							<button id="setPhone" class="button-blue">submit</button>
-          	</form>
+          <div id="settings" class="modal hidden">
+          	<div class="modal-bkgrnd">
+							<span onclick="hideSettingsModal()" class="close-button" type="reset"></span>
+						  <form id="phone_input">							                  
+								<label for=""><h2>Enter ID</h2></label>							                  
+								<input id="rviVinInput" class="text-input" size="45" placeholder="Nickname, ID or VIN number">				                  
+								<button id="setPhone" class="button-blue">submit</button>
+	          	</form>
+	          </div>
+	        </div>
 
-            <form id="password_input" class="hidden" onsubmit="return false;">
-              <label for="">ENTER VIN NUMBER</label>
-              <input id="vin" class="text-input">
-              <label for="">ENTER PASSWORD</label>
-              <input id="password" class="text-input">
-              <button id="setVinAndPassword" class="button-blue">submit</button>
-            </form>
-          </div>
+<!-- 	            <form id="password_input" class="hidden" onsubmit="return false;">
+	              <label for="">ENTER VIN NUMBER</label>
+	              <input id="vin" class="text-input">
+	              <label for="">ENTER PASSWORD</label>
+	              <input id="password" class="text-input">
+	              <button id="setVinAndPassword" class="button-blue">submit</button>
+	            </form> -->
+         
 
 					<div class="static_parts_bg"></div>		
 					<div id="hazard_btn" class="hazard_btn"></div>
@@ -196,9 +209,17 @@
 					<div id="bottomBarLogoImg">
 						<div class="bottomBarLogo"></div>
 					</div>
-				</div><!--end of wrapper -->
+					<div id="resultMessage" class="modal hidden">
+						<div class="modal-bkgrnd">
+							<span onclick="hideMessageModal()" class="close-button" type="reset"></span>
+							<h3>Success!</h3>
+							<p>You have saved or updated information on this device.</p>
+						</div>
+					</div>
+				</div><!--end of flex-item -->
+
 				<!-- END HTML ELEMENTS -->
 			</div>	
 		</div>
-	</body>
+	</body>s
 </html>
