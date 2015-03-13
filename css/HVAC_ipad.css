@@ -448,26 +448,6 @@ h6, .label {
 	content:url('../images/jlr_logo_color.png');
 }
 
-#resultMessage	{
-	display:none;
-}
-
-#resultMessage h2 {
-	font-size: 20pt;
-	color: #FFF;
-	text-transform: uppercase;
-	padding: 5%;
-}
-
-#resultMessage p {
-	font-size: 16pt;
-	color: #FFF;
-	margin:0 auto;
-	width: 80%;
-	line-height: 1.5;
-	text-align: left;
-}
-
 .fa {
 	position: absolute;
   color: #FE9C00;
@@ -476,30 +456,20 @@ h6, .label {
 }
 
 #settings {
-	z-index: 2;
-	position: fixed;
-	top: 0;
-	height: 100%;
-	width: 100%;
-  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center; 
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+	z-index: 1;
 }
-form {
+.modal-bkgrnd {
+  width: 80%;  
+  background-color: #333;  
+  padding: 0 20px 20px 30px;
+}
+/*form {
 	max-width: 80%;
 	background-color: #333;
 	color: #fe9c00;
 	padding: 3%;
 	position: relative;
-}
+}*/
 button {
 	margin: 3% 0;
 }
