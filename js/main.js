@@ -42,7 +42,8 @@ var init_hvac = function () {
     }
 
     rvi = new RVI();
-    rvi.connect("ws://rvi1.nginfotpdx.net:8808/websession",function(e){console.log(e)});
+    rvi.connect("ws://rvi1.nginfotpdx.net:8808/websession",function(e){ console.log(e) });
+	subscribeToVin();
 	registerMobileServices();
 };
 
@@ -153,7 +154,7 @@ function unsubscribeToVin(){
 function registerMobileServices(){
 
 	hvacServices = [
-//		{"name":"hvac/air_circ","callback":"aircirc_rcb"},
+		{"name":"hvac/air_circ","callback":"aircirc_rcb"},
 		{"name":"hvac/fan","callback":"fan_rcb"},
 		{"name":"hvac/fan_speed","callback":"fanspeed_rcb"},
 		{"name":"hvac/temp_left","callback":"temp_left_rcb"},
@@ -163,13 +164,19 @@ function registerMobileServices(){
 		{"name":"hvac/seat_heat_left","callback":"seat_heat_left_rcb"},
 		{"name":"hvac/airflow_direction","callback":"airflow_direction_rcb"},
 		{"name":"hvac/defrost_rear","callback":"defrost_rear_rcb"},
-		{"name":"hvac/defrost_front","callback":"defrost_front_rcb"}	
+		{"name":"hvac/defrost_front","callback":"defrost_front_rcb"}
+		// Temp left, airflow direction, and fanspeed are set on "Max"
 	];
 
 	for(serviceName in hvacServices){
 		rvi.register_service(localStorage['mobileVin']+"/"+hvacServices[serviceName].name,hvacServices[serviceName].callback);
 		console.log("Registered callback `"+hvacServices[serviceName].callback+"` for "+hvacServices[serviceName].name);
 	}
+}
+
+function aircirc_rcb(args){
+	var val = (args['value'] == "true")?true:0;
+	hvacIndicator.onAirRecirculationChanged(Number(args['value']));
 }
 
 function fanspeed_rcb(args){
@@ -203,6 +210,17 @@ function airflow_direction_rcb(args){
 	hvacIndicator.onAirflowDirectionChanged(Number(args['value']));
 }
 
+function defrost_rear_rcb(args){
+	hvacIndicator.status.rearDefrost = args['value'];
+	var val = (args['value'] == "true")?true:0;
+	hvacIndicator.onRearDefrostChanged(val);
+}
+
+function defrost_front_rcb(args){
+	hvacIndicator.status.frontDefrost = args['value'];
+	var val = (args['value'] == "true")?true:0;
+	hvacIndicator.onFrontDefrostChanged(val);
+}
 
 /**
  * Calls initialization fuction after document is loaded.
