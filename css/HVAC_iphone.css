@@ -455,6 +455,7 @@ h6, .label {
   color: #FE9C00;
 	right: 2.5%;
 	top: 2%;
+	-webkit-transform: translate(0, 0);
 }
 #settings {
 	z-index: 1;
@@ -483,7 +484,7 @@ button {
 	padding: 3%;
 	margin: 2% 0;
 	background-color: rgba(255, 255, 255, 0.8);
-	font-size: 1.5em;
+	font-size: 1.25em;
 	color: #000;
 }
 
@@ -522,36 +523,28 @@ button {
 
 .qrcode-button {
   align-items: center;
-  -webkit-animation: bounceInDown 900ms 200ms ease-in-out both;
-  animation: bounceInDown 900ms 200ms ease-in-out both;
-  background: linear-gradient(#db9604, #915a00);
-  border: 1px solid rgba(255, 255, 255, .4);
-  box-shadow: inset 0px 0px 2px 1px #5a3800;
-  display: flex;
-  font-size: 4em;
-  height: 40px;
-  justify-content: center;
-  text-align: center;
-  text-shadow: 1px 1px 3px #444;
-  width: 40px;
-}
-
-.qrcode-button {
-  align-items: center;
   background: linear-gradient(#888, #333);
   background: url('../images/qr-code.png') no-repeat center;
-  height: 63px;
-  width: 62px; 
-  border: 5px solid rgba(255, 255, 255, .4);
+  height: 100px;
+  width: 100px; 
+/*  border: 5px solid rgba(255, 255, 255, .4);
   box-shadow: inset 0px 0px 2px 1px #444;                                       
   border-top: 5px solid #fff;
-  border-bottom: 5px solid #444;
+  border-bottom: 5px solid #444;*/
   border-radius: 4px;
+  margin-right: 10%;
+  box-shadow: 2px 0px 15px #000;
+  -webkit-box-shadow: 1px 1px 15px #000;
 }
 
 .input-group {
+	align-items: center;
 	border: none;
-  max-width: 90%;
-  padding: 3%;
-  margin: 2% 0;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+}
+
+button {
+	padding: 15px 30px;
 }
