@@ -72,6 +72,16 @@
 
 			$("form").submit(function(){return false;});
 
+			$("#qr-code").click(function() {
+				console.log("clicked the qr-code camera button");
+				if ($("#reader-container").hasClass("fadeout")) {
+					$("#reader-container").removeClass("fadeout").addClass("fadein");
+				}
+				else {
+					$("#reader-container").removeClass("fadein").addClass("fadeout");
+				}
+			});
+
     });
 
 	function hideMessageModal(){
@@ -97,6 +107,18 @@
 	    $("#phone_input").hide();
 	}
 
+/*	$("#qr-code").click(function() {
+	console.log("clicked the qr-code camera button");
+	if ($("#reader-container").hasClass("hidden")) {
+		$("#reader-container").addClass("flex-center");
+		$("#reader-container").removeClass("hidden");
+	}
+	else {
+		$("#reader-container").addClass("hidden");
+		$("#reader-container").removeClass("flex-center");
+	}
+});*/
+
 </script>
 
 	</head>
@@ -117,6 +139,9 @@
 								<div class="input-group">
 									<button id="qr-code" class="qrcode-button"></button>			                  
 									<button id="setPhone" class="button-blue">submit</button>
+								</div>
+								<div id="reader-container" class="flex-center fadeout">
+									<div id="reader" class="reader center"></div>
 								</div>
 	          	</form>
 	          </div>

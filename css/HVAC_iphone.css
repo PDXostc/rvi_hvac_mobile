@@ -548,3 +548,22 @@ button {
 button {
 	padding: 15px 30px;
 }
+
+.reader {
+	background-color: #000;
+	height: 250px;
+	margin: 20px;
+	width: 300px;
+}
+
+.fadein, .fadeout {
+    opacity: 0;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.fadein {
+    opacity: 1;
+}
