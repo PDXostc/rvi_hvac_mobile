@@ -17,7 +17,6 @@
 		
 
 		<script type="text/javascript" src="./js/jquery-1.8.2.js"></script>
-		<!-- <script type="text/javascript" src="./DNA_common/js/init.js"></script> -->
 		<script type="text/javascript" src="./js/jquery.nouislider.js"></script>
 		<script type="text/javascript" src="./js/hvacController.js"></script>
 		
@@ -84,42 +83,30 @@
 
     });
 
-	function hideMessageModal(){
-		$("#resultMessage").addClass('hidden');
-		console.log("hideMessageModal");
-	}
+		function hideMessageModal(){
+			$("#resultMessage").addClass('hidden');
+			console.log("hideMessageModal");
+		}
 
-	function hideSettingsModal(){
-		$("#settings").addClass('hidden');
-		console.log("hideSettingsModal");
-	}
+		function hideSettingsModal(){
+			$("#settings").addClass('hidden');
+			console.log("hideSettingsModal");
+		}
 
-	function showPhoneSetting(){
-		$("#settings").removeClass('hidden');
-	  $("#phone_input").show();
+		function showPhoneSetting(){
+			$("#settings").removeClass('hidden');
+		  $("#phone_input").show();
 
-	  $("#rviVinInput").val(localStorage["rviVin"]);
-	  $("#password_input").hide();
-	}
+		  $("#rviVinInput").val(localStorage["rviVin"]);
+		  $("#password_input").hide();
+		}
 
-	function hidePhoneSetting(){
-	    $("#settings").addClass('hidden');
-	    $("#phone_input").hide();
-	}
+		function hidePhoneSetting(){
+		    $("#settings").addClass('hidden');
+		    $("#phone_input").hide();
+		}
 
-/*	$("#qr-code").click(function() {
-	console.log("clicked the qr-code camera button");
-	if ($("#reader-container").hasClass("hidden")) {
-		$("#reader-container").addClass("flex-center");
-		$("#reader-container").removeClass("hidden");
-	}
-	else {
-		$("#reader-container").addClass("hidden");
-		$("#reader-container").removeClass("flex-center");
-	}
-});*/
-
-</script>
+		</script>
 
 	</head>
 
@@ -141,20 +128,11 @@
 									<button id="setPhone" class="button-blue">submit</button>
 								</div>
 								<div id="reader-container" class="flex-center fadeout">
-									<div id="reader" class="reader center"></div>
+									<div id="reader" class="reader center flex-center"></div>
 								</div>
 	          	</form>
 	          </div>
 	        </div>
-
-<!-- 	            <form id="password_input" class="hidden" onsubmit="return false;">
-	              <label for="">ENTER VIN NUMBER</label>
-	              <input id="vin" class="text-input">
-	              <label for="">ENTER PASSWORD</label>
-	              <input id="password" class="text-input">
-	              <button id="setVinAndPassword" class="button-blue">submit</button>
-	            </form> -->
-         
 
 					<div class="static_parts_bg"></div>		
 					<div id="hazard_btn" class="hazard_btn"></div>
@@ -249,5 +227,5 @@
 				<!-- END HTML ELEMENTS -->
 			</div>	
 		</div>
-	</body>s
+	</body>
 </html>

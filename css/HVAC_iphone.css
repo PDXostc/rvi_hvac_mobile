@@ -31,8 +31,7 @@
 /*********** UI Slider stuff is in nouislider.HVAC.css ***********/
 
 html {
-	/*overflow: hidden;*/
-
+	overflow: hidden;
 }
 
 body {
@@ -296,7 +295,7 @@ h6, .label {
 /*************lower half******************/
 .fanSpeedOn {
 	height: 6%;
-	background: url("../images/fan_bar_on.svg") no-repeat;
+	background: url("../images/fan_bar_on.png") no-repeat;
 	position: absolute;
 	left: 33%;
 	top: 63%;
@@ -447,9 +446,11 @@ h6, .label {
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
+
 .bottomBarLogo {
 	content:url('../images/jlr_logo_color.png');
 }
+
 .fa {
 	position: absolute;
   color: #FE9C00;
@@ -457,27 +458,26 @@ h6, .label {
 	top: 2%;
 	-webkit-transform: translate(0, 0);
 }
+
 #settings {
 	z-index: 1;
 }
+
 #settings > label {
 	font-size: 3em;
 }
+
 .modal-bkgrnd {
   width: 80%;  
   background-color: #333;  
   padding: 0 20px 20px 30px;
 }
-/*form {
-	max-width: 90%;
-	background-color: #444;
-	color: #fe9c00;
-	padding: 3%;
-}*/
+
 button {
 	margin: 3% 0;
 	font-size: 1.5em;
 }
+
 .text-input {
 	border: none;
 	max-width: 90%;
@@ -488,53 +488,23 @@ button {
 	color: #000;
 }
 
-/*severe weather alert box*/
-.weather-alert {
-	background: -webkit-linear-gradient(top, #222 30%, rgba(83, 181, 206, .6) 100%);
-	color: #fff;
-	-webkit-opacity: 0.95;	
-	-webkit-box-shadow: 0 0 90px rgba(255,255,255,0.8);
-	overflow-y: scroll;
-	overflow-x: auto;
-	touch-action: pan-y;
-	z-index: 1;
-	background-color: #222;	
-	padding: 20px 20px 20px 30px;
-	width: 90%;
-	max-height: 90%;
-	top: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	position: fixed;
-	left: 50%;
-}
-.weather-alert > .close-button {
-	padding: 0;
-}
-/* text inside alert must be large enough to be easily legible */
-.weather-alert > p {
-	font-size: .75em;
-	color: #FFF;
-	padding: 0 10px;
-	line-height: 1.5em;	
-}
-.weather-alert > h2 {
-	font-size: 1.5em;
-}
-
+/* display none until we can support this feature later */
 .qrcode-button {
   align-items: center;
   background: linear-gradient(#888, #333);
   background: url('../images/qr-code.png') no-repeat center;
   height: 100px;
   width: 100px; 
-/*  border: 5px solid rgba(255, 255, 255, .4);
-  box-shadow: inset 0px 0px 2px 1px #444;                                       
-  border-top: 5px solid #fff;
-  border-bottom: 5px solid #444;*/
   border-radius: 4px;
   margin-right: 10%;
   box-shadow: 2px 0px 15px #000;
   -webkit-box-shadow: 1px 1px 15px #000;
+  display: none;
+}
+
+/* display none until we can support this feature */
+#reader-container {
+	display: none;
 }
 
 .input-group {
