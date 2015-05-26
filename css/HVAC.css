@@ -8,508 +8,499 @@
 * IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
 * PARTICULAR PURPOSE.
 *
-* Filename:	 						HVAC.css
+* Filename:             HVAC.css
 * Version:              2.0
-* Date:                 January 2015
+* Date:                 May 2015
 * Project:              RVI - HVAC mobile
 *
 */
-*
-*/
 
-/* Adds z-index to #settingsPage due to z-indexing in sliderui js */
-#hvac-app #settingsPage {
-	z-index: 3;
-}
 
 /* Override for Settings list items */
 .settingElement {
-	margin: 0 40px; 
+  margin: 0 40px;
 }
 
 /*********** UI Slider stuff is in nouislider.HVAC.css ***********/
 
 body {
-	width: 768px;
-	height: 1024px;
-	background-image: none;
+  width: 768px;
+  height: 1024px;
+  background-image: none;
 }
 
 .clearBoth {
-	clear:both;
-}
-
-.borderColorTheme {
-	border-color: rgb(196, 196, 196);
-	border-color: rgba(196, 196, 196, 0.5);
+  clear: both;
 }
 
 .static_parts_bg {
-	background: url("../images/static_parts_bg.svg") no-repeat;
-  height: 60.8%;
-  width: 100%;
   position: absolute;
   top: 6.25%;
+  width: 100%;
+  height: 60.8%;
+  background: url('../images/static_parts_bg.svg') no-repeat;
   background-size: 100%;
 }
 
-h6, .label {
+h6,
+.label {
   font-size: 2rem;
   text-transform: uppercase;
 }
 
 /*********HAZARD BUTTON************/
 .hazard_btn {
-	width: 59%;
-	height: 10%;
-	background: url("../images/hazard_off.svg") no-repeat;
-	top: 1%;
-	left: 21%;
-	position: absolute;
-	background-size: 100%;
+  position: absolute;
+  top: 1%;
+  left: 21%;
+  width: 59%;
+  height: 10%;
+  background: url('../images/hazard_off.svg') no-repeat;
+  background-size: 100%;
 }
 
 .hazard_btn.on {
-	background: url("../images/hazard_on.svg") no-repeat;
-	background-size: 100%;
+  background: url('../images/hazard_on.svg') no-repeat;
+  background-size: 100%;
 }
 
 .hazard_btn.blink {
-	background: url("../images/hazard_blink.svg") no-repeat;
-	background-size: 100%;
+  background: url('../images/hazard_blink.svg') no-repeat;
+  background-size: 100%;
 }
 
 .climate_labels {
-	position: absolute;
-	width: 80%;
-	height: 10%;
-	top: 12%;
-	left: 14.25%;
+  position: absolute;
+  top: 12%;
+  left: 14.25%;
+  width: 80%;
+  height: 10%;
 }
 
 .label_borders {
-	border-left: 55px solid #fe9c00;
-	padding-left: 1%;
-	float: left;
-	margin: 0 9.75%;
+  float: left;
+  margin: 0 9.75%;
+  padding-left: 1%;
+  border-left: 55px solid #fe9c00;
 }
 
 /*********LEFT HEAT SEAT BUTTON************/
 .left_seat_btn {
-	width: 22%;
-	height: 13.6%;
-	position: absolute;
-	left: 21%;
-	top: 15.5%;
+  position: absolute;
+  top: 15.5%;
+  left: 21%;
+  width: 22%;
+  height: 13.6%;
 }
 
 .left_heat_seat_off {
-	background: url("../images/left_heat_seat_off.svg") no-repeat;
-	background-size: 100%;	
-	width: 100%;
-	height: 100%;
-	position: absolute;		
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('../images/left_heat_seat_off.svg') no-repeat;
+  background-size: 100%;
 }
 
 .left_heat_seat_on {
-	height: 100%;
-	background: url("../images/left_heat_seat_on.svg") no-repeat bottom;
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	background-size: 100%;	
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../images/left_heat_seat_on.svg') no-repeat bottom;
+  background-size: 100%;
 }
 
 .left_heat_seat_on.stage1 {
-	height: 0;
+  height: 0;
 }
 
 .left_heat_seat_on.stage2 {
-	height: 43%;
+  height: 43%;
 }
 
 .left_heat_seat_on.stage3 {
-	height: 63%;
+  height: 63%;
 }
 
 .left_heat_seat_on.stage4 {
-	height: 100%;
+  height: 100%;
 }
 
 /*********RIGHT HEAT SEAT BUTTON************/
 .right_seat_btn {
-	width: 22%;
-	height: 13.4%;
-	position: absolute;
-	right: 21%;
-	top: 15.5%;
+  position: absolute;
+  top: 15.5%;
+  right: 21%;
+  width: 22%;
+  height: 13.4%;
 }
 
 .right_heat_seat_off {
-	background: url("../images/right_heat_seat_off.svg") no-repeat;
-	width: 100%;
-	height: 100%;
-	position: absolute;	
-	background-size: 100%;	
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('../images/right_heat_seat_off.svg') no-repeat;
+  background-size: 100%;
 }
 
 .right_heat_seat_on {
-	height: 100%;
-	background: url("../images/right_heat_seat_on.svg") no-repeat bottom;
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	background-size: 100%;	
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../images/right_heat_seat_on.svg') no-repeat bottom;
+  background-size: 100%;
 }
 
 .right_heat_seat_on.stage1 {
-	height:0;
+  height: 0;
 }
 
 .right_heat_seat_on.stage2 {
-	height: 43%;
+  height: 43%;
 }
 
 .right_heat_seat_on.stage3 {
-	height: 63%;
+  height: 63%;
 }
 
 .right_heat_seat_on.stage4 {
-	height:100%;
+  height: 100%;
 }
 
 /*********LEFT NUM SLIDER************/
 .left_num_bg {
-	background: url("../images/left_number_bg.svg") no-repeat;
-	width: 22%;
-	height: 22.75%;
-	position: absolute;
-	left: 25%;
-	top: 32%;
-	overflow: hidden;
-	background-size: 100%;
+  position: absolute;
+  top: 32%;
+  left: 25%;
+  overflow: hidden;
+  width: 22%;
+  height: 22.75%;
+  background: url('../images/left_number_bg.svg') no-repeat;
+  background-size: 100%;
 }
 
 .left_num_cover {
-	background:url("../images/left_number_cover.svg") no-repeat;
-	width: 22%;
-	height: 25%;
-	position: absolute;
-	left: 21%;
-	top: 31%;
+  position: absolute;
+  top: 31%;
+  left: 21%;
+  width: 22%;
+  height: 25%;
   pointer-events: none;
-	background-size: 100%;    
+  background: url('../images/left_number_cover.svg') no-repeat;
+  background-size: 100%;
 }
 
 .scrollable.left {
-	height: 100%;
-	position: absolute;
-	width: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .scrollable.left ul {
-	list-style-type: none;
-	padding: 0;	
-	margin: 0;
-	position: relative; /* Enables positionning of elements inside viewport */
-	height: 100%;
+  position: relative; /* Enables positionning of elements inside viewport */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 .scrollable.left li {
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	color: #fff;
-	line-height: 130%;
-	text-align: left;
-	padding-left: 5%;
-	position: relative;
-	font-size: 6rem;
+  font-size: 6rem;
+  line-height: 130%;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-left: 5%;
+  text-align: left;
+  color: #fff;
 }
 
 /*********RIGHT NUM SLIDER************/
 
 .right_num_bg {
-	background: url("../images/right_number_bg.svg") no-repeat;
-	width: 22%;
-	height: 22.75%;
-	position: absolute;
-	right: 19%;
-	top: 32%;
-	overflow: hidden;
-	background-size: 100%;
+  position: absolute;
+  top: 32%;
+  right: 19%;
+  overflow: hidden;
+  width: 22%;
+  height: 22.75%;
+  background: url('../images/right_number_bg.svg') no-repeat;
+  background-size: 100%;
 }
 
 .right_num_cover {
-	background:url("../images/right_number_cover.svg") no-repeat;
-	width: 22%;
-	height: 25%;
-	position: absolute;
-	right: 21%;
-	top: 31%;
+  position: absolute;
+  top: 31%;
+  right: 21%;
+  width: 22%;
+  height: 25%;
   pointer-events: none;
-	background-size: 100%;    
+  background: url('../images/right_number_cover.svg') no-repeat;
+  background-size: 100%;
 }
 
 .scrollable.right {
-	height: 100%;
-	position: absolute;
-	width: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .scrollable.right ul {
-	list-style-type: none;
-	font-size: 3rem;
-	padding: 0;	
-	margin: 0;
-	position: relative; /* Enables positionning of elements inside viewport */
-	height: 100%;
+  font-size: 3rem;
+  position: relative; /* Enables positionning of elements inside viewport */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 .scrollable.right li {
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	color: #fff;
-	line-height: 130%;
-	text-align: left;
-	padding-left: 16%;
-	position: relative;
-	font-size: 6rem;
+  font-size: 6rem;
+  line-height: 130%;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-left: 16%;
+  text-align: left;
+  color: #fff;
 }
 
 /*************lower half******************/
 .fanSpeedOn {
-	height: 7.25%;
-	background: url("../images/fan_bar_on.png") no-repeat;
-	position: absolute;
-	left: 33%;
-	top: 59.5%;
+  position: absolute;
+  top: 59.5%;
+  left: 33%;
+  height: 7.25%;
+  background: url('../images/fan_bar_on.png') no-repeat;
 }
 
 /********FAN DIRECTION***********/
 .fan_dir_down_btn {
-	background: url("../images/fan_dir_down_off.svg") no-repeat;
-	width: 17.08333333%;
-	height: 4.8em;
-	top: 61%;
-	left: 3.333333%;
-	position: absolute;
-	background-size: 100%;
+  position: absolute;
+  top: 61%;
+  left: 3.333333%;
+  width: 17.08333333%;
+  height: 4.8em;
+  background: url('../images/fan_dir_down_off.svg') no-repeat;
+  background-size: 100%;
 }
 
 .fan_dir_down_btn.on {
-	background: url("../images/fan_dir_down_on.svg") no-repeat;
-	background-size: 100%;
+  background: url('../images/fan_dir_down_on.svg') no-repeat;
+  background-size: 100%;
 }
 
 .fan_dir_right_btn {
-	background: url("../images/fan_dir_right_off.svg") no-repeat;	
-	width: 17.08333333%;
-	height: 4.4em;
-	top: 72%;
-	left: 3.333333%;
-	position: absolute;
-	background-size: 100%;
+  position: absolute;
+  top: 72%;
+  left: 3.333333%;
+  width: 17.08333333%;
+  height: 4.4em;
+  background: url('../images/fan_dir_right_off.svg') no-repeat;
+  background-size: 100%;
 }
 
 .fan_dir_right_btn.on {
-	background: url("../images/fan_dir_right_on.svg") no-repeat;
-	background-size: 100%;
+  background: url('../images/fan_dir_right_on.svg') no-repeat;
+  background-size: 100%;
 }
 
 .fan_dir_up_btn {
-	background: url("../images/fan_dir_up_off.svg") no-repeat;
-	width: 17.08333333%;
-	height: 4.4em;
-	top: 82.2%;
-	left: 3.333333%;
-	position: absolute;
-	background-size: 100%;
+  position: absolute;
+  top: 82.2%;
+  left: 3.333333%;
+  width: 17.08333333%;
+  height: 4.4em;
+  background: url('../images/fan_dir_up_off.svg') no-repeat;
+  background-size: 100%;
 }
 
 .fan_dir_up_btn.on {
-	background: url("../images/fan_dir_up_on.svg") no-repeat;
-	background-size: 100%;
+  background: url('../images/fan_dir_up_on.svg') no-repeat;
+  background-size: 100%;
 }
 
 .fan_control_ac {
-	background: url("../images/fan_control_ac_off.svg") no-repeat;
-	width: 15.555556%;
-	height: 4.4em;
-	top: 72%;
-	left: 24.333%;
-	position: absolute;
-	background-size: 100%;
+  position: absolute;
+  top: 72%;
+  left: 24.333%;
+  width: 15.555556%;
+  height: 4.4em;
+  background: url('../images/fan_control_ac_off.svg') no-repeat;
+  background-size: 100%;
 }
 
 .fan_control_ac.on {
-	background: url("../images/fan_control_ac_on.svg") no-repeat;
-	background-size: 100%;
+  background: url('../images/fan_control_ac_on.svg') no-repeat;
+  background-size: 100%;
 }
 
 .fan_control_auto {
-	background: url("../images/fan_control_auto_off.svg") no-repeat;
-	width: 15.416667%;
-	height: 4.4em;
-	top: 72%;
-	left: 42.333%;
-	position: absolute;
-	background-size: 100%;
+  position: absolute;
+  top: 72%;
+  left: 42.333%;
+  width: 15.416667%;
+  height: 4.4em;
+  background: url('../images/fan_control_auto_off.svg') no-repeat;
+  background-size: 100%;
 }
 
 .fan_control_auto.on {
-	background: url("../images/fan_control_auto_on.svg") no-repeat;
-	background-size: 100%;
+  background: url('../images/fan_control_auto_on.svg') no-repeat;
+  background-size: 100%;
 }
 
 .fan_control_circ {
-	background: url("../images/fan_control_circ_off.svg") no-repeat;
-	width: 15.555556%;
-	height: 4.4em;
-	top: 72%;
-	left: 60.333%;
-	position: absolute;
-	background-size: 100%;
+  position: absolute;
+  top: 72%;
+  left: 60.333%;
+  width: 15.555556%;
+  height: 4.4em;
+  background: url('../images/fan_control_circ_off.svg') no-repeat;
+  background-size: 100%;
 }
 
 .fan_control_circ.on {
-	background: url("../images/fan_control_circ_on.svg") no-repeat;
-	background-size: 100%;
+  background: url('../images/fan_control_circ_on.svg') no-repeat;
+  background-size: 100%;
 }
 
 /***DEFROST****/
 .defrost_max_btn {
-	background: url("../images/defrost_max_off.svg") no-repeat;
-	width: 17.08333333%;
-	height: 4.8em;
-	top: 61%;
-	right: 3.333333%;
-	position: absolute;
-	background-size: 100%;
+  position: absolute;
+  top: 61%;
+  right: 3.333333%;
+  width: 17.08333333%;
+  height: 4.8em;
+  background: url('../images/defrost_max_off.svg') no-repeat;
+  background-size: 100%;
 }
 
 .defrost_max_btn.on {
-	background: url("../images/defrost_max_on.svg") no-repeat;
-	background-size: 100%;
+  background: url('../images/defrost_max_on.svg') no-repeat;
+  background-size: 100%;
 }
 
 .defrost_rear_btn {
-	background: url("../images/defrost_rear_off.svg") no-repeat;	
-	width: 17.08333333%;
-	height: 4.4em;
-	top: 72%;
-	right: 3.333333%;
-	position: absolute;
-	background-size: 100%;
+  position: absolute;
+  top: 72%;
+  right: 3.333333%;
+  width: 17.08333333%;
+  height: 4.4em;
+  background: url('../images/defrost_rear_off.svg') no-repeat;
+  background-size: 100%;
 }
 
 .defrost_rear_btn.on {
-	background: url("../images/defrost_rear_on.svg") no-repeat;
-	background-size: 100%;
+  background: url('../images/defrost_rear_on.svg') no-repeat;
+  background-size: 100%;
 }
 
 .defrost_front_btn {
-	background: url("../images/defrost_front_off.svg") no-repeat;
-	width: 17.08333333%;
-	height: 4.4em;
-	top: 82.2%;
-	right: 3.333333%; 
-	position: absolute;
-	background-size: 100%;
+  position: absolute;
+  top: 82.2%;
+  right: 3.333333%;
+  width: 17.08333333%;
+  height: 4.4em;
+  background: url('../images/defrost_front_off.svg') no-repeat;
+  background-size: 100%;
 }
 
 .defrost_front_btn.on {
-	background: url("../images/defrost_front_on.svg") no-repeat;
-	background-size: 100%;
-}		
+  background: url('../images/defrost_front_on.svg') no-repeat;
+  background-size: 100%;
+}
 
 #bottomBarLogoImg {
-	position: absolute;
-	width: 40%;
-	left: 50%;
-	bottom: 6%;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  width: 40%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .bottomBarLogo {
-	content: url('../images/jlr_logo_color.png');
+  content: url('../images/jlr_logo_color.png');
 }
 
 .fa {
-  color: #FE9C00;
   float: right;
-	margin-right: 2.5%;
-	margin-top: 1%;
+  margin-top: 1%;
+  margin-right: 2.5%;
+  color: #fe9c00;
 }
 
 #settings {
-	z-index: 1;
+  z-index: 1;
 }
 
 .modal-bkgrnd {
-  width: 80%;  
-  background-color: #333;  
+  width: 80%;
   padding: 0 20px 20px 30px;
+  background-color: #333;
 }
 
 button {
-	margin: 3% 0;
+  margin: 3% 0;
 }
 .text-input {
-	border: none;
-	max-width: 90%;
-	padding: 3%;
-	margin: 2% 0;
+  max-width: 90%;
+  margin: 2% 0;
+  padding: 3%;
+  border: none;
 }
 
 /* display none until we can support this feature */
 .qrcode-button {
+  display: none;
   align-items: center;
+  width: 100px;
+  height: 100px;
+  margin-right: 10%;
+  border-radius: 4px;
   background: linear-gradient(#888, #333);
   background: url('../images/qr-code.png') no-repeat center;
-  height: 100px;
-  width: 100px; 
-  border-radius: 4px;
-  margin-right: 10%;
-  box-shadow: 2px 0px 15px #000;
   -webkit-box-shadow: 1px 1px 15px #000;
-  display: none;
+  box-shadow: 2px 0 15px #000;
 }
 
 /* display none until we can support this feature */
 #reader-container {
-	display: none;
+  display: none;
 }
 
 .input-group {
-	border: none;
   -webkit-justify-content: center;
   justify-content: center;
   align-items: center;
+  border: none;
 }
 
 button {
-	height: 56px;
-	display: flex;
+  display: flex;
+  height: 56px;
 }
 
 .reader {
-	background-color: #000;
-	height: 250px;
-	margin: 20px;
-	width: 300px;
+  width: 300px;
+  height: 250px;
+  margin: 20px;
+  background-color: #000;
 }
 
-.fadein, .fadeout {
-    opacity: 0;
-    -moz-transition: opacity 0.4s ease-in-out;
-    -o-transition: opacity 0.4s ease-in-out;
-    -webkit-transition: opacity 0.4s ease-in-out;
-    transition: opacity 0.4s ease-in-out;
+.fadein,
+.fadeout {
+  -webkit-transition: opacity .4s ease-in-out;
+  -moz-transition: opacity .4s ease-in-out;
+  -o-transition: opacity .4s ease-in-out;
+  transition: opacity .4s ease-in-out;
+  opacity: 0;
 }
 
 .fadein {
-    opacity: 1;
+  opacity: 1;
 }

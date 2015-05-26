@@ -6,52 +6,52 @@
 
 @font-face {
   font-family: SourceSansPro;
-  src: url(../fonts/SourceSansPro-ExtraLight.ttf) format(truetype);
   font-weight: 200;
+  src: url(../fonts/SourceSansPro-ExtraLight.ttf) format(truetype);
 }
 
 @font-face {
   font-family: SourceSansPro;
+  font-weight: 300;
   src: url(../fonts/SourceSansPro-Light.ttf) format(truetype);
-  font-weight: 300;
 }
 
 @font-face {
   font-family: SourceSansPro;
+  font-weight: 300;
+  font-style: italic;
   src: url(../fonts/SourceSansPro-LightItalic.ttf) format(truetype);
-  font-weight: 300;
-  font-style: italic;
 }
 
 @font-face {
   font-family: SourceSansPro;
+  font-weight: 400;
   src: url(../fonts/SourceSansPro-Regular.ttf) format(truetype);
-  font-weight: 400;
 }
 
 @font-face {
   font-family: SourceSansPro;
-  src: url(../fonts/SourceSansPro-Italic.ttf) format(truetype);
   font-weight: 400;
   font-style: italic;
+  src: url(../fonts/SourceSansPro-Italic.ttf) format(truetype);
 }
 
 @font-face {
   font-family: SourceSansPro;
-  src: url(../fonts/SourceSansPro-Semibold.ttf) format(truetype);
   font-weight: 600;
+  src: url(../fonts/SourceSansPro-Semibold.ttf) format(truetype);
 }
 
 @font-face {
   font-family: SourceSansPro;
-  src: url(../fonts/SourceSansPro-Bold.ttf) format(truetype);
   font-weight: 700;
+  src: url(../fonts/SourceSansPro-Bold.ttf) format(truetype);
 }
 
 @font-face {
   font-family: SourceSansPro;
-  src: url(../fonts/SourceSansPro-Black.ttf) format(truetype);
   font-weight: 900;
+  src: url(../fonts/SourceSansPro-Black.ttf) format(truetype);
 }
 
 /* Root Elements ******************************************/
@@ -64,29 +64,30 @@ html {
 
 body {
   font-family: SourceSansPro, sans-serif;
-/*  width: 1080px;
-  height: 1920px;*/
-  margin: 0;
-  padding: 0;
-  background-color: rgb(0,0,0);
-  background-image: url("../images/Hex-Background.jpg");
   position: relative;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
   -webkit-justify-content: space-between;
-  justify-content:space-between;
+  justify-content: space-between;
+  /*  width: 1080px;
+  height: 1920px;*/
+  margin: 0;
+  padding: 0;
+  background-color: rgb(0,0,0);
+  background-image: url('../images/Hex-Background.jpg');
 }
 
-*{
-  user-select: none;
+* {
   -webkit-user-select: none;
+  user-select: none;
 }
 
-input, textarea{
-  user-select: auto;
+input,
+textarea {
   -webkit-user-select: auto;
+  user-select: auto;
 }
 
 
@@ -94,11 +95,16 @@ input, textarea{
 
 /* Headings */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
-  color: #fe9c00;
-  margin: .5em 0;
   line-height: 1em;
+  margin: .5em 0;
+  color: #fe9c00;
 }
 
 h1 {
@@ -121,21 +127,25 @@ h5 {
   font-size: 3.6rem;
 }
 
-h6, .label {
+h6,
+.label {
   font-size: 3rem;
   text-transform: uppercase;
 }
 
 /* Text */
 
-p, ul {
+p,
+ul {
   margin-bottom: 1em;
 }
 
-p, ul, li,
+p,
+ul,
+li,
 .text-input {
-  color: white;
   font-size: 3rem;
+  color: white;
 }
 
 .text-large {
@@ -170,7 +180,7 @@ li {
 
 /* Sectioning Content and Div *****************************/
 
-div, 
+div,
 nav,
 aside,
 article,
@@ -186,53 +196,55 @@ section {
 */
 
 #base {
+  position: relative;
   display: -webkit-flex;
   display: flex;
   -webkit-flex: 1;
-  -ms-flex: 1;
   flex: 1;
   -webkit-flex-direction: column;
   flex-direction: column;
   -webkit-justify-content: space-between;
   justify-content: space-between;
-  position: relative;
   height: inherit;
+
+  -ms-flex: 1;
 }
 
 .modal,
 #settings {
-  height: 100%;
-  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  box-sizing: border-box;
   display: -webkit-flex;
   display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
 
 .modal {
-  -webkit-align-items: center;
-  align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
 }
 .modal-content {
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, .8);
 }
 
 #settings {
   -webkit-flex: 1;  /* Safari 6.1+ */
-  -ms-flex: 1;  /* IE 10 */ 
   flex: 1;
-  background-color: rgba(0, 0, 0, 0.9);
   transition: height .25s ease-out;
+  background-color: rgba(0, 0, 0, .9);
+
+  -ms-flex: 1;  /* IE 10 */
 }
 
 #settings.collapsed {
   overflow: hidden;
-  height: 0%;
+  height: 0;
 }
 
 /*#app .content,
@@ -263,17 +275,18 @@ section {
 }*/
 
 #app {
+  position: relative;
   display: -webkit-flex;
   display: flex;
   -webkit-flex: 1;
-  -ms-flex: 1;
   flex: 1;
   -webkit-flex-direction: column;
   flex-direction: column;
   -webkit-justify-content: space-around;
   justify-content: space-around;
   background-color: transparent;
-  position: relative;
+
+  -ms-flex: 1;
 }
 
 /*#bottom-bar {
@@ -284,45 +297,48 @@ section {
 
 #top-bar,
 #bottom-bar {
-  text-align: center;
-  box-shadow: inset 0 0 40px 2px rgba(255, 255, 255, 0.85);
   -webkit-align-items: center;
   align-items: center;
+  text-align: center;
+  box-shadow: inset 0 0 40px 2px rgba(255, 255, 255, .85);
 }
 
 #top-bar ul {
   display: -webkit-flex;
   display: flex;
   margin: 0;
-  padding: 0; 
+  padding: 0;
 }
 
 #top-bar .grid-space {
   display: inline;
-  padding: 10px; 
-  -webkit-flex: 1; 
-  -ms-flex: 1;
+  -webkit-flex: 1;
   flex: 1;
-  height: 100%;
-  background-color: transparent;
   box-sizing: border-box;
+  height: 100%;
+  padding: 10px;
+  background-color: transparent;
+
+  -ms-flex: 1;
 }
 
 #top-bar .grid-space:not(:last-child) {
-  border-right: 1px solid rgba(255, 255, 255, 0.25);
+  border-right: 1px solid rgba(255, 255, 255, .25);
 }
 
 #volume,
 #settings-button {
   -webkit-flex: 1;
+  flex: 1                                                                                                                                      ;
+
   -ms-flex: 1;
-  flex: 1                                                                                                                                      ;              
 }
 
 #agl-logo {
-  -webkit-flex: 3; 
-  -ms-flex: 3;
+  -webkit-flex: 3;
   flex: 3;
+
+  -ms-flex: 3;
 }
 
 /* Colors *************************************************/
@@ -368,11 +384,11 @@ section {
 }
 
 .yellow-viv {
-  color: #ffff00;
+  color: #ff0;
 }
 
 .yellow-viv-bg {
-  background-color: #ffff00;
+  background-color: #ff0;
 }
 
 .green-lt {
@@ -418,7 +434,7 @@ section {
 .modal,
 #settings,
 .overlay-bg {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,.8);
 }
 
 /* Controls ***********************************************/
@@ -428,65 +444,65 @@ section {
 button,
 .button,
 input[type='button'] {
-  color: white;
-  position: relative;
-  display: inline-block;
+  font-family: inherit;
   font-size: 3rem;
   font-weight: 600;
-  font-family: inherit;
-  padding: 8px 20px 12px;
+  position: relative;
+  display: inline-block;
   margin: 20px;
+  padding: 8px 20px 12px;
+  color: white;
   border-width: 1px;
   border-style: solid;
-  background-color: rgba(0, 0, 0, 0.8);
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, .8);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .9);
 }
 
 .button-orange {
   border-color: #fe9c00;
-  box-shadow: inset 0 0 20px rgba(254, 156, 0, 0.9);
+  box-shadow: inset 0 0 20px rgba(254, 156, 0, .9);
 }
 
 .button-blue {
   border-color: #b2f0ff;
-  box-shadow: inset 0 0 20px rgba(178, 240, 255, 0.9);
+  box-shadow: inset 0 0 20px rgba(178, 240, 255, .9);
 }
 
 .button-green {
   border-color: #59ff00;
-  box-shadow: inset 0 0 20px rgba(89, 255, 0, 0.9);
+  box-shadow: inset 0 0 20px rgba(89, 255, 0, .9);
 }
 
 .button-yellow {
-  border-color: #ffff00;
-  box-shadow: inset 0 0 20px rgba(255, 255, 0, 0.9);
+  border-color: #ff0;
+  box-shadow: inset 0 0 20px rgba(255, 255, 0, .9);
 }
-.clear-button::after { 
-  margin-left: -50px; 
-  content: "\00d7";
-  line-height: 100px;
+.clear-button::after {
   font-size: 5rem;
-  color: gray; 
+  line-height: 100px;
+  margin-left: -50px;
+  content: '\00d7';
+  color: gray;
 }
 
-/* Forms **************************************************/ 
+/* Forms **************************************************/
 
 /* 
   for consistent styling, apply .text-input class to elements: 
   - <input type='text'> 
   - <input type='password'>
   - <textarea> 
-*/ 
+*/
 
 .text-input {
-  font-size: 3rem; 
-  color: white;
-  padding: 20px;
+  font-size: 3rem;
   margin: 10px;
+  padding: 20px;
+  color: white;
   border-width: 1px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, .5);
+  background-color: rgba(0, 0, 0, .8);
 }
 
 input,
@@ -496,25 +512,25 @@ textarea,
 }
 
 .input-yellow {
-  border-color: rgba(255, 255, 0, 0.5);
+  border-color: rgba(255, 255, 0, .5);
 }
 
 .input-yellow:focus {
-  box-shadow: 0 0 20px rgba(255, 255, 0, 0.9); 
+  box-shadow: 0 0 20px rgba(255, 255, 0, .9);
 }
 
 .input-blue {
-  border-color: rgba(178, 240, 255, 0.5);
+  border-color: rgba(178, 240, 255, .5);
 }
 
 .input-blue:focus {
-  box-shadow: 0 0 20px rgba(178, 240, 255, 0.9);
+  box-shadow: 0 0 20px rgba(178, 240, 255, .9);
 }
 
 /* 
   A wrapper for grouping input fields, labels and other
   form content. Best used on block elements (eg. div)
-*/ 
+*/
 
 .input-group {
   display: -webkit-flex;
@@ -523,15 +539,17 @@ textarea,
   justify-content: space-between;
 }
 
-.input-group label { 
+.input-group label {
   -webkit-flex: 1;
-  -ms-flex: 1;
   flex: 1;
-} 
-.input-group .text-input { 
+
+  -ms-flex: 1;
+}
+.input-group .text-input {
   -webkit-flex: 2;
-  -ms-flex: 2;
   flex: 2;
+
+  -ms-flex: 2;
 }
 
 /* Switches ***********************************************/
@@ -545,7 +563,7 @@ textarea,
 .switch-large {
   width: 450px;
   height: 150px;
-} 
+}
 
 .switch-small {
   width: 225px;
@@ -558,25 +576,25 @@ textarea,
 }
 
 .switch-plate {
-  margin: 0;
-  padding: 0;
   position: relative;
-  background-repeat: no-repeat;
-  background-size: 100%;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .switch-control {
-  height: 100%;
   width: 100%;
+  height: 100%;
+  -webkit-filter: drop-shadow(4px 4px 5px rgba(0,0,0,.35));
+  background-image: url(../images/switchcontrol.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
-  background-image: url(../images/switchcontrol.svg);
-  -webkit-filter: drop-shadow(4px 4px 5px rgba(0,0,0,0.35));
-} 
+}
 
 /* On/Off Styles for Background Plate */
 
@@ -591,46 +609,46 @@ textarea,
 /* On/Off Styles for switch control(knob) */
 
 .off .switch-plate {
-  padding-left: 3%;
   padding-right: 64%;
+  padding-left: 3%;
 }
 
 .on .switch-plate {
-  padding-left: 64%;
   padding-right: 3%;
+  padding-left: 64%;
 }
 
 /* Close button */
 .close-button {
-  padding: 10px;
   position: relative;
-  right: 20px;
   top: 0;
+  right: 20px;
   float: right;
+  padding: 10px;
 }
 .close-button::after {
-  content: "\00d7";
+  font-size: 5rem;
   width: 26px;
   height: 63px;
-  color: white;
-  font-size: 5rem;
+  content: '\00d7';
   cursor: pointer;
+  color: white;
 }
 
 /* input field with input glow focus and grey placeholder text */
 .input-white {
-  border: none;
   color: rgba(196, 196, 196, 1.0);
+  border: none;
 }
 ::-webkit-input-placeholder {
-   color: #444;
+  color: #444;
 }
 .input-white:focus {
   outline: none;
   box-shadow: 0 0 15px 5px #b0e0ee;
 }
 
-/* Modifiers **********************************************/ 
+/* Modifiers **********************************************/
 /* Modifiers should stay at the bottom of the CSS *********/
 
 .hidden,
@@ -667,13 +685,13 @@ textarea,
 .flex-parent {
   display: -webkit-flex;
   display: flex;
-
 }
 
 .flex-item {
-  -webkit-flex: 1; 
-  -ms-flex: 1;
+  -webkit-flex: 1;
   flex: 1;
+
+  -ms-flex: 1;
 }
 
 .flex-column {
@@ -682,18 +700,18 @@ textarea,
 }
 
 .flex-center {
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
   display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
 }
 
 .flex-column-center {
   -webkit-flex-direction: column;
   flex-direction: column;
-  -webkit-justify-content: center;  
+  -webkit-justify-content: center;
   justify-content: center;
 }
 
@@ -713,19 +731,20 @@ textarea {
 
 /* Allows vertical and horizontal scrolling where specified 
    for lists */
-ul, ol {
+ul,
+ol {
   touch-action: pan-x pan-y;
 }
 
 /* 
   Apply to elements where a scrollbar is desired.
   Shows a standard scrollbar as needed.
-*/ 
+*/
 
-.scrollbar-x { 
+.scrollbar-x {
   overflow-x: auto;
   touch-action: pan-x;
-} 
+}
 
 .scrollbar-y {
   overflow-y: auto;
@@ -742,8 +761,8 @@ ul, ol {
   a scrollbar is desired.
 */
 
-.scrollable-x { 
-  overflow-x: auto; 
+.scrollable-x {
+  overflow-x: auto;
   touch-action: pan-x;
 }
 
@@ -768,44 +787,44 @@ ul, ol {
   margin-top: 20px;
 }
 ::-webkit-scrollbar-track {
-  background: -webkit-linear-gradient(right, rgba(0,0,0,0.6), rgba(72, 72, 72, .8));
-  background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(72, 72, 72, .8));
-  border-left: 1px solid #202020;
-  border-right: 1px solid #606060;
-  border-top: none;
-  border-bottom: none;
   margin-bottom: -1px;
+  border-top: none;
+  border-right: 1px solid #606060;
+  border-bottom: none;
+  border-left: 1px solid #202020;
+  background: -webkit-linear-gradient(right, rgba(0,0,0,.6), rgba(72, 72, 72, .8));
+  background: linear-gradient(to right, rgba(0,0,0,.6), rgba(72, 72, 72, .8));
 }
-::-webkit-scrollbar-thumb { 
-  background:linear-gradient(to right, rgba(112,112,112, .8), rgba(72,72,72, .8));
-  border-radius:5px;
+::-webkit-scrollbar-thumb {
   border: 1px solid #202020;
-}  
- ::-webkit-scrollbar-button {
-  height:11px;
-  background: -webkit-linear-gradient(right, rgba(0,0,0,0.6), rgba(72, 72, 72, .8));
-  background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(72, 72, 72, .8));
-  border-left: 1px solid #202020;
-  border-right: 1px solid #606060;
+  border-radius: 5px;
+  background: linear-gradient(to right, rgba(112,112,112, .8), rgba(72,72,72, .8));
+}
+::-webkit-scrollbar-button {
+  height: 11px;
   border-top: none;
+  border-right: 1px solid #606060;
   border-bottom: none;
-} 
+  border-left: 1px solid #202020;
+  background: -webkit-linear-gradient(right, rgba(0,0,0,.6), rgba(72, 72, 72, .8));
+  background: linear-gradient(to right, rgba(0,0,0,.6), rgba(72, 72, 72, .8));
+}
 ::-webkit-scrollbar-corner {
-  background: -webkit-linear-gradient(right, rgba(0,0,0,0.6), rgba(72, 72, 72, .8));
-  background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(72, 72, 72, .8));
-  border-left: 1px solid #202020;
-  border-right: 1px solid #606060;
-  border-top: none;
-  border-bottom: none;
   width: 8px;
   height: 8px;
+  border-top: none;
+  border-right: 1px solid #606060;
+  border-bottom: none;
+  border-left: 1px solid #202020;
+  background: -webkit-linear-gradient(right, rgba(0,0,0,.6), rgba(72, 72, 72, .8));
+  background: linear-gradient(to right, rgba(0,0,0,.6), rgba(72, 72, 72, .8));
 }
 
 /*orange scrollbar*/
 /*::-webkit-scrollbar-thumb { 
   background-color:#fe9c00;
   border-radius:5px;
-} */ 
+} */
 
 
 /**********************************************************/
@@ -814,23 +833,23 @@ ul, ol {
 /*the following three styles are to fade the bottom of a scrollable div (see news and weather alerts */
 
 .gradientFade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 9%;
-  left: 0;
-  bottom: 0;
   background: -webkit-linear-gradient(top, rgba(0,0,0,0) 3%,rgba(0,0,0,1) 100%);
-  position: absolute;
 }
 .scrollIndicator {
   display: block;
   text-align: center;
 }
 .scrollIndicator::after {
-  content: "\002c7";
-  color: white;
   font-size: 4em;
-  cursor: pointer;
   font-weight: lighter;
+  content: '\002c7';
+  cursor: pointer;
+  color: white;
 }
 
 /**********************************************************/
@@ -840,28 +859,28 @@ ul, ol {
 }
 
 .oneLineEllipsis {
+  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
-  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
 
 .twoLinesEllipsis {
+  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
-  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 
 .threeLinesEllipsis {
+  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
-  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
@@ -979,7 +998,7 @@ ul, ol {
   color: rgba(254, 156, 0, 1.0); /*#fe9c00*/
 }
 
-.fontLtGreen{
+.fontLtGreen {
   color: rgb(205, 255, 178);
   color: rgba(205, 255, 178, 1.0); /*#cdffb2*/
 }
@@ -1014,7 +1033,7 @@ ul, ol {
 
 .pageBgColorNormalTransparent {
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, .8);
 }
 
 /* BACKGROUND COLOR */
@@ -1025,21 +1044,21 @@ ul, ol {
 
 .bgColorNormal {
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, .8);
 }
 
 .bgColorNormalTransparent {
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, .5);
 }
 /* used in News, by any other app too? */
 .bgColorThemeTransparent {
   background-color: rgb(58, 174, 255);
-  background-color: rgba(58, 174, 255, 0.5);
+  background-color: rgba(58, 174, 255, .5);
 }
 .textBgColorThemeTransparent {
   background-color: rgb(29, 162, 255);
-  background-color: rgba(29, 162, 255, 0.4);
+  background-color: rgba(29, 162, 255, .4);
 }
 
 
@@ -1053,222 +1072,242 @@ ul, ol {
  * Med=Wider For use with buttons
  * LG= widest, for use in special cases*/
 
- .box-inshadow,
+.box-inshadow,
 .box-outshadow {
-  color: white;
-  padding: 20px;
   margin: 20px;
+  padding: 20px;
+  color: white;
   border-width: 1px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, .5);
+  background-color: rgba(0, 0, 0, .8);
 }
 
 .box-inshadow {
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .9);
 }
 
 .box-outshadow {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 20px rgba(255, 255, 255, .9);
 }
 
 /* Yellow */
 
 .box-in-yellow,
 .box-out-yellow {
-  color: #FFFF00;
-  border-color: rgba(255, 255, 0, 0.5);
+  color: #ff0;
+  border-color: rgba(255, 255, 0, .5);
 }
 
 .box-in-yellow {
-  box-shadow: inset 0 0 20px rgba(255, 255, 0, 0.9);
+  box-shadow: inset 0 0 20px rgba(255, 255, 0, .9);
 }
 
 .box-out-yellow {
-  box-shadow: 0 0 20px rgba(255, 255, 0, 0.9);
+  box-shadow: 0 0 20px rgba(255, 255, 0, .9);
 }
 
 /* Orange */
 
 .box-in-orange,
 .box-out-orange {
-  color: #FE9C00;
-  border-color: rgba(254, 156, 0, 0.5);
+  color: #fe9c00;
+  border-color: rgba(254, 156, 0, .5);
 }
 
 .box-in-orange {
-  box-shadow: inset 0 0 20px rgba(254, 156, 0, 0.9);
+  box-shadow: inset 0 0 20px rgba(254, 156, 0, .9);
 }
 
 .box-out-orange {
-  box-shadow: 0 0 20px rgba(254, 156, 0, 0.9);
+  box-shadow: 0 0 20px rgba(254, 156, 0, .9);
 }
 
 /* Blue */
 
 .box-out-blue {
   color: #b2f0ff;
-  box-shadow: 0 0 20px rgba(178, 240, 255, 0.9);
-  border-color: rgba(178, 240, 255, 0.5);
+  border-color: rgba(178, 240, 255, .5);
+  box-shadow: 0 0 20px rgba(178, 240, 255, .9);
 }
 
- .boxShadowI1Lt {
-  box-shadow: inset 0 0 13px rgba(178, 240, 255, 0.8);
+.boxShadowI1Lt {
+  box-shadow: inset 0 0 13px rgba(178, 240, 255, .8);
 }
 
-.boxShadowI1LtActive:active,.boxShadowI1LtActive:focus {
+.boxShadowI1LtActive:active,
+.boxShadowI1LtActive:focus {
   box-shadow: inset 0 0 20px rgb(83, 181, 206);
 }
 
 .boxShadowI2Lt {
-  box-shadow: inset 0 0 13px rgba(205, 255, 178, 0.8);
+  box-shadow: inset 0 0 13px rgba(205, 255, 178, .8);
 }
 
-.boxShadowI2LtActive:active,.boxShadowI2LtActive:focus {
+.boxShadowI2LtActive:active,
+.boxShadowI2LtActive:focus {
   box-shadow: inset 0 0 20px rgb(89, 255, 0);
 }
 
 .boxShadowI3Lt {
-  box-shadow: inset 0 0 13px rgba(255, 211, 140, 0.8);
+  box-shadow: inset 0 0 13px rgba(255, 211, 140, .8);
 }
 
-.boxShadowI3LtActive:active,.boxShadowI3LtActive:focus {
+.boxShadowI3LtActive:active,
+.boxShadowI3LtActive:focus {
   box-shadow: inset 0 0 20px rgb(254, 156, 0);
 }
 
 .boxShadowI4Lt {
-  box-shadow: inset 0 0 13px rgba(255, 255, 178, 0.8);
+  box-shadow: inset 0 0 13px rgba(255, 255, 178, .8);
 }
 
-.boxShadowI4LtActive:active,.boxShadowI4LtActive:focus {
+.boxShadowI4LtActive:active,
+.boxShadowI4LtActive:focus {
   box-shadow: inset 0 0 20px rgb(255, 255, 0);
 }
 
 .boxShadowI5Std {
-  box-shadow: inset 0 0 13px rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 0 13px rgba(255, 255, 255, .8);
 }
 
-.boxShadowI5LtActive:active,.boxShadowI5LtActive:focus {
+.boxShadowI5LtActive:active,
+.boxShadowI5LtActive:focus {
   box-shadow: inset 0 0 20px rgb(255, 255, 255,);
 }
 
 .boxShadowI1Std {
-  box-shadow: inset 0 0 30px rgba(178, 240, 255, 0.8);
+  box-shadow: inset 0 0 30px rgba(178, 240, 255, .8);
 }
 
-.boxShadowI1StdActive:active,.boxShadowI1StdActive:focus {
+.boxShadowI1StdActive:active,
+.boxShadowI1StdActive:focus {
   box-shadow: inset 0 0 50px rgb(83, 181, 206);
 }
 
 .boxShadowI2Std {
-  box-shadow: inset 0 0 30px rgba(205, 255, 178, 0.8);
+  box-shadow: inset 0 0 30px rgba(205, 255, 178, .8);
 }
 
-.boxShadowI2StdActive:active,.boxShadowI2StdActive:focus {
+.boxShadowI2StdActive:active,
+.boxShadowI2StdActive:focus {
   box-shadow: inset 0 0 50px rgb(89, 255, 0);
 }
 
 .boxShadowI3Std {
-  box-shadow: inset 0 0 30px rgba(255, 211, 140, 0.8);
+  box-shadow: inset 0 0 30px rgba(255, 211, 140, .8);
 }
 
-.boxShadowI3StdActive:active,.boxShadowI3StdActive:focus {
+.boxShadowI3StdActive:active,
+.boxShadowI3StdActive:focus {
   box-shadow: inset 0 0 50px rgb(254, 156, 0);
 }
 
 .boxShadowI4Std {
-  box-shadow: inset 0 0 30px rgba(255, 255, 178, 0.8);
+  box-shadow: inset 0 0 30px rgba(255, 255, 178, .8);
 }
 
-.boxShadowI4StdActive:active,.boxShadowI4StdActive:focus {
+.boxShadowI4StdActive:active,
+.boxShadowI4StdActive:focus {
   box-shadow: inset 0 0 50px rgb(255, 255, 0);
 }
 
 .boxShadowI5Std {
-  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, .8);
 }
 
-.boxShadowI5StdActive:active,.boxShadowI5StdActive:focus {
+.boxShadowI5StdActive:active,
+.boxShadowI5StdActive:focus {
   box-shadow: inset 0 0 50px rgb(255, 255, 255,);
 }
 
 .boxShadowI1Med {
-  box-shadow: inset 0 0 50px rgba(178, 240, 255, 0.8);
+  box-shadow: inset 0 0 50px rgba(178, 240, 255, .8);
 }
 
-.boxShadowI1MedActive:active,.boxShadowI1MedActive:focus {
+.boxShadowI1MedActive:active,
+.boxShadowI1MedActive:focus {
   box-shadow: inset 0 0 70px rgb(83, 181, 206);
 }
 
 .boxShadowI2Med {
-  box-shadow: inset 0 0 50px rgba(205, 255, 178, 0.8);
+  box-shadow: inset 0 0 50px rgba(205, 255, 178, .8);
 }
 
-.boxShadowI2MedActive:active,.boxShadowI2MedActive:focus {
+.boxShadowI2MedActive:active,
+.boxShadowI2MedActive:focus {
   box-shadow: inset 0 0 70px rgb(89, 255, 0);
 }
 
 .boxShadowI3Med {
-  box-shadow: inset 0 0 50px rgba(255, 211, 140, 0.8);
+  box-shadow: inset 0 0 50px rgba(255, 211, 140, .8);
 }
 
-.boxShadowI3MedActive:active,.boxShadowI3MedActive:focus {
+.boxShadowI3MedActive:active,
+.boxShadowI3MedActive:focus {
   box-shadow: inset 0 0 70px rgb(254, 156, 0);
 }
 
 .boxShadowI4Med {
-  box-shadow: inset 0 0 50px rgba(255, 255, 178, 0.8);
+  box-shadow: inset 0 0 50px rgba(255, 255, 178, .8);
 }
 
-.boxShadowI4MedActive:active,.boxShadowI4MedActive:focus {
+.boxShadowI4MedActive:active,
+.boxShadowI4MedActive:focus {
   box-shadow: inset 0 0 70px rgb(255, 255, 0);
 }
 
 .boxShadowI5Med {
-  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, .8);
 }
 
-.boxShadowI5MedActive:active,.boxShadowI5MedActive:focus {
+.boxShadowI5MedActive:active,
+.boxShadowI5MedActive:focus {
   box-shadow: inset 0 0 70px rgb(255, 255, 255,);
 }
 
 .boxShadowI1Lg {
-  box-shadow: inset 0 0 70px rgba(178, 240, 255, 0.8);
+  box-shadow: inset 0 0 70px rgba(178, 240, 255, .8);
 }
 
-.boxShadowI1LgActive:active,.boxShadowI1LgActive:focus {
+.boxShadowI1LgActive:active,
+.boxShadowI1LgActive:focus {
   box-shadow: inset 0 0 90px rgb(83, 181, 206);
 }
 
 .boxShadowI2Lg {
-  box-shadow: inset 0 0 70px rgba(205, 255, 178, 0.8);
+  box-shadow: inset 0 0 70px rgba(205, 255, 178, .8);
 }
 
-.boxShadowI2LgActive:active,.boxShadowI2LgActive:focus {
+.boxShadowI2LgActive:active,
+.boxShadowI2LgActive:focus {
   box-shadow: inset 0 0 90px rgb(89, 255, 0);
 }
 
 .boxShadowI3Lg {
-  box-shadow: inset 0 0 70px rgba(255, 211, 140, 0.8);
+  box-shadow: inset 0 0 70px rgba(255, 211, 140, .8);
 }
 
-.boxShadowI3LgActive:active,.boxShadowI3LgActive:focus {
+.boxShadowI3LgActive:active,
+.boxShadowI3LgActive:focus {
   box-shadow: inset 0 0 90px rgb(254, 156, 0);
 }
 
 .boxShadowI4Lg {
-  box-shadow: inset 0 0 70px rgba(255, 255, 178, 0.8);
+  box-shadow: inset 0 0 70px rgba(255, 255, 178, .8);
 }
 
-.boxShadowI4LgActive:active,.boxShadowI4LgActive:focus {
+.boxShadowI4LgActive:active,
+.boxShadowI4LgActive:focus {
   box-shadow: inset 0 0 90px rgb(255, 255, 0);
 }
 
 .boxShadowI5Lg {
-  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, .8);
 }
 
-.boxShadowI5LgActive:active,.boxShadowI5LgActive:focus {
+.boxShadowI5LgActive:active,
+.boxShadowI5LgActive:focus {
   box-shadow: inset 0 0 70px rgb(255, 255, 255,);
 }
 
@@ -1308,7 +1347,7 @@ ul, ol {
   border-color: rgba(254, 156, 0, 1.0); /*#fe9c00*/
 }
 
-.borderLtGreen{
+.borderLtGreen {
   border-color: rgb(205, 255, 178);
   border-color: rgba(205, 255, 178, 1.0); /*#cdffb2*/
 }
@@ -1337,122 +1376,137 @@ ul, ol {
  * Med=Wider For use with buttons
  * LG= widest, for use in special cases*/
 .boxShadow1Std {
-  box-shadow: 0 0 30px rgba(83, 181, 206, 0.8);
+  box-shadow: 0 0 30px rgba(83, 181, 206, .8);
 }
 
-.boxShadow1StdActive:active,.boxShadow1StdActive:focus {
+.boxShadow1StdActive:active,
+.boxShadow1StdActive:focus {
   box-shadow: 0 0 50px rgb(178, 240, 255);
 }
 
 .boxShadow2Std {
-  box-shadow: 0 0 30px rgba(89, 255, 0, 0.8);
+  box-shadow: 0 0 30px rgba(89, 255, 0, .8);
 }
 
-.boxShadow2StdActive:active,.boxShadow2StdActive:focus {
+.boxShadow2StdActive:active,
+.boxShadow2StdActive:focus {
   box-shadow: 0 0 50px rgb(205, 255, 178);
 }
 
 .boxShadow3Std {
-  box-shadow: 0 0 30px rgba(254, 156, 0, 0.8);
+  box-shadow: 0 0 30px rgba(254, 156, 0, .8);
 }
 
-.boxShadow3StdActive:active,.boxShadow3StdActive:focus {
+.boxShadow3StdActive:active,
+.boxShadow3StdActive:focus {
   box-shadow: 0 0 50px rgb(255, 211, 140);
 }
 
 .boxShadow4Std {
-  box-shadow: 0 0 30px rgba(255, 255, 0, 0.8);
+  box-shadow: 0 0 30px rgba(255, 255, 0, .8);
 }
 
-.boxShadow4StdActive:active,.boxShadow4StdActive:focus {
+.boxShadow4StdActive:active,
+.boxShadow4StdActive:focus {
   box-shadow: 0 0 50px rgb(255, 255, 178);
 }
 
 .boxShadow5Std {
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 30px rgba(255, 255, 255, .8);
 }
 
-.boxShadow5StdActive:active,.boxShadow5StdActive:focus {
+.boxShadow5StdActive:active,
+.boxShadow5StdActive:focus {
   box-shadow: 0 0 50px rgb(255, 255, 255,);
 }
 
 .boxShadow1Med {
-  box-shadow:  0 0 50px rgba(83, 181, 206, 0.8);
+  box-shadow: 0 0 50px rgba(83, 181, 206, .8);
 }
 
-.boxShadow1MedActive:active,.boxShadow1MedActive:focus {
+.boxShadow1MedActive:active,
+.boxShadow1MedActive:focus {
   box-shadow: 0 0 70px rgb(178, 240, 255);
 }
 
 .boxShadow2Med {
-  box-shadow:  0 0 50px rgba(89, 255, 0, 0.8);
+  box-shadow: 0 0 50px rgba(89, 255, 0, .8);
 }
 
-.boxShadow2MedActive:active,.boxShadow2MedActive:focus {
+.boxShadow2MedActive:active,
+.boxShadow2MedActive:focus {
   box-shadow: 0 0 70px rgb(205, 255, 178);
 }
 
 .boxShadow3Med {
-  box-shadow: 0 0 50px rgba(254, 156, 0, 0.8);
+  box-shadow: 0 0 50px rgba(254, 156, 0, .8);
 }
 
-.boxShadow3MedActive:active,.boxShadow3MedActive:focus {
+.boxShadow3MedActive:active,
+.boxShadow3MedActive:focus {
   box-shadow: 0 0 70px rgb(255, 211, 140);
 }
 
 .boxShadow4Med {
-  box-shadow: 0 0 50px rgba(255, 255, 0, 0.8);
+  box-shadow: 0 0 50px rgba(255, 255, 0, .8);
 }
 
-.boxShadow4MedActive:active,.boxShadow4MedActive:focus {
+.boxShadow4MedActive:active,
+.boxShadow4MedActive:focus {
   box-shadow: 0 0 70px rgb(255, 255, 178);
 }
 
 .boxShadow5Med {
-  box-shadow:  0 0 50px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 50px rgba(255, 255, 255, .8);
 }
 
-.boxShadow5MedActive:active,.boxShadow5MedActive:focus {
-  box-shadow:  0 0 70px rgb(255, 255, 255,);
+.boxShadow5MedActive:active,
+.boxShadow5MedActive:focus {
+  box-shadow: 0 0 70px rgb(255, 255, 255,);
 }
 
 .boxShadow1Lg {
-  box-shadow:  0 0 70px rgba(83, 181, 206, 0.8);
+  box-shadow: 0 0 70px rgba(83, 181, 206, .8);
 }
 
-.boxShadow1LgActive:active,.boxShadow1LgActive:focus {
-  box-shadow:  0 0 90px rgb(178, 240, 255);
+.boxShadow1LgActive:active,
+.boxShadow1LgActive:focus {
+  box-shadow: 0 0 90px rgb(178, 240, 255);
 }
 
 .boxShadow2Lg {
-  box-shadow: 0 0 70px rgba(89, 255, 0, 0.8);
+  box-shadow: 0 0 70px rgba(89, 255, 0, .8);
 }
 
-.boxShadow2LgActive:active,.boxShadow2LgActive:focus {
+.boxShadow2LgActive:active,
+.boxShadow2LgActive:focus {
   box-shadow: 0 0 90px rgb(205, 255, 178);
 }
 
 .boxShadow3Lg {
-  box-shadow:  0 0 70px rgba(254, 156, 0, 0.8);
+  box-shadow: 0 0 70px rgba(254, 156, 0, .8);
 }
 
-.boxShadow3LgActive:active,.boxShadow3LgActive:focus {
-  box-shadow:  0 0 90px rgb(255, 211, 140);
+.boxShadow3LgActive:active,
+.boxShadow3LgActive:focus {
+  box-shadow: 0 0 90px rgb(255, 211, 140);
 }
 
 .boxShadow4Lg {
-  box-shadow:  0 0 70px rgba(255, 255, 0, 0.8);
+  box-shadow: 0 0 70px rgba(255, 255, 0, .8);
 }
 
-.boxShadow4LgActive:active,.boxShadow4LgActive:focus {
-  box-shadow:  0 0 90px rgb(255, 255, 178);
+.boxShadow4LgActive:active,
+.boxShadow4LgActive:focus {
+  box-shadow: 0 0 90px rgb(255, 255, 178);
 }
 
 .boxShadow5Lg {
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 50px rgba(255, 255, 255, .8);
 }
 
-.boxShadow5LgActive:active,.boxShadow5LgActive:focus {
+.boxShadow5LgActive:active,
+.boxShadow5LgActive:focus {
   box-shadow: 0 0 70px rgb(255, 255, 255,);
 }
 
@@ -1492,7 +1546,7 @@ ul, ol {
   border-color: rgba(254, 156, 0, 1.0); /*#fe9c00*/
 }
 
-.borderLtGreen{
+.borderLtGreen {
   border-color: rgb(205, 255, 178);
   border-color: rgba(205, 255, 178, 1.0); /*#cdffb2*/
 }
@@ -1519,7 +1573,7 @@ ul, ol {
 
 .textBgColorNormalTransparent {
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, .8);
 }
 
 
@@ -1529,30 +1583,29 @@ ul, ol {
 }
 
 .opacityHeavy {
-  opacity: 0.8;
+  opacity: .8;
 }
 
 .opacityMedium {
-  opacity: 0.65;
+  opacity: .65;
 }
 
 .opacityLight {
-  opacity: 0.5;
+  opacity: .5;
 }
 
 /* Flexbox modal */
 .modalFlexbox {
   position: fixed;
+  z-index: 5;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  z-index: 5;
   display: -webkit-flex;
   display: flex;
-  /*-webkit-box-align: center;*/
-  -webkit-align-items: center;
-  align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
- * Copyright (c) 2014, Intel Corporation, Jaguar Land Rover
+ * Copyright (c) 2015, Intel Corporation, Jaguar Land Rover
  *
  * This program is licensed under the terms and conditions of the
  * Apache License, version 2.0.  The full text of the Apache License is at
@@ -8,224 +8,209 @@
  *
 -->
 <html id="hvac-app">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>DNA_HVAC</title>
 
-		<link rel="stylesheet" href="./css/common.css"/>
-		<link rel="stylesheet" href="./css/font-awesome/css/font-awesome.css"/>
-		
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>DNA_HVAC</title>
+  <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="./css/font-awesome/css/font-awesome.css" />
+  <script type="text/javascript" src="./js/jquery-1.8.2.js"></script>
+  <script type="text/javascript" src="./js/jquery.nouislider.js"></script>
+  <script type="text/javascript" src="./js/hvacController.js"></script>
+  <script type="text/javascript" src="./js/ej.js"></script>
+  <script type="text/javascript" src="./js/wse.js"></script>
+  <script type="text/javascript" src="./js/rvi.js"></script>
+  <script type="text/javascript" src="./js/main.js"></script>
+  <script type="text/javascript">
+  if ((navigator.userAgent.match(/iPad/i))) {
+    document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC_ipad.css\" charset=\"utf-8\" \/>");
+    document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-768.css\" charset=\"utf-8\" \/>");
+    document.write("<meta name=\"viewport\" content=width=768px, height=1024px, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0  \/>");
+  } else if (navigator.userAgent.match(/iPhone/i)) {
+    document.write("<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" \/>");
+    document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC_iphone.css\" charset=\"utf-8\" \/>");
+    document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-720.css\" charset=\"utf-8\" \/>");
+    document.write("<meta name=\"viewport\" content=\'width=device-width, user-scalable=0\' \/>");
+  } else if (navigator.userAgent.match(/Android/i)) {
+    document.write("<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" \/>");
+    document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC_iphone.css\" charset=\"utf-8\" \/>");
+    document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-720.css\" charset=\"utf-8\" \/>");
+    document.write("<meta name=\"viewport\" content=\'width=720, height=1080, user-scalable=0\' \/>");
+  } else {
+    document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC.css\" \/>");
+    document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-768.css\" charset=\"utf-8\" \/>");
+    document.write("<meta name=\"viewport\" content=\'width=768, height=1024, user-scalable=no\' \/>");
+  }
+  </script>
+  <script>
+  $(document).ready(function() {
 
-		<script type="text/javascript" src="./js/jquery-1.8.2.js"></script>
-		<script type="text/javascript" src="./js/jquery.nouislider.js"></script>
-		<script type="text/javascript" src="./js/hvacController.js"></script>
-		
-		<script type="text/javascript" src="./js/ej.js"></script>
-		<script type="text/javascript" src="./js/wse.js"></script>
-		<script type="text/javascript" src="./js/rvi.js"></script>
-
-		<script type="text/javascript" src="./js/main.js"></script>
-
-		<script type="text/javascript">
-			if((navigator.userAgent.match(/iPad/i))) {
-			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC_ipad.css\" charset=\"utf-8\" \/>");
-			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-768.css\" charset=\"utf-8\" \/>");
-			document.write("<meta name=\"viewport\" content=width=768px, height=1024px, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0  \/>");
-			}
-			else if(navigator.userAgent.match(/iPhone/i)) {
-			document.write("<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" \/>");
-			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC_iphone.css\" charset=\"utf-8\" \/>");
-			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-720.css\" charset=\"utf-8\" \/>");
-			document.write("<meta name=\"viewport\" content=\'width=device-width, user-scalable=0\' \/>");
-			}
-			else if(navigator.userAgent.match(/Android/i)) {
-			document.write("<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" \/>");
-			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC_iphone.css\" charset=\"utf-8\" \/>");
-			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-720.css\" charset=\"utf-8\" \/>");
-			document.write("<meta name=\"viewport\" content=\'width=720, height=1080, user-scalable=0\' \/>");
-			}
-			else
-			{
-			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/HVAC.css\" \/>");
-			document.write("<link type=\"text\/css\" rel=\"stylesheet\" media=\"screen\" href=\"css/nouislider.HVAC-768.css\" charset=\"utf-8\" \/>");
-			document.write("<meta name=\"viewport\" content=\'width=768, height=1024, user-scalable=no\' \/>");
-			}
-		</script>
-
-    <script>
-    $(document).ready(function(){
-
-			$(".fa").click(function(ev){
-				showPhoneSetting();
-			});
-
-			$("#setPhone").click(function(ev){
-				var phone = $("#phone").val();
-				setVin($("#rviVinInput").val());
-				hidePhoneSetting();
-			});
-
-			$('#setVinAndPassword').click(function(ev){
-				var setVinResult = setVin();
-			});
-
-			$("form").submit(function(){return false;});
-
-			$("#qr-code").click(function() {
-				console.log("clicked the qr-code camera button");
-				if ($("#reader-container").hasClass("fadeout")) {
-					$("#reader-container").removeClass("fadeout").addClass("fadein");
-				}
-				else {
-					$("#reader-container").removeClass("fadein").addClass("fadeout");
-				}
-			});
-
+    $(".fa").click(function(ev) {
+      showPhoneSetting();
     });
 
-		function hideMessageModal(){
-			$("#resultMessage").addClass('hidden');
-			console.log("hideMessageModal");
-		}
+    $("#setPhone").click(function(ev) {
+      var phone = $("#phone").val();
+      setVin($("#rviVinInput").val());
+      hidePhoneSetting();
+    });
 
-		function hideSettingsModal(){
-			$("#settings").addClass('hidden');
-			console.log("hideSettingsModal");
-		}
+    $('#setVinAndPassword').click(function(ev) {
+      var setVinResult = setVin();
+    });
 
-		function showPhoneSetting(){
-			$("#settings").removeClass('hidden');
-		  $("#phone_input").show();
+    $("form").submit(function() {
+      return false;
+    });
 
-		  $("#rviVinInput").val(localStorage["rviVin"]);
-		  $("#password_input").hide();
-		}
+    $("#qr-code").click(function() {
+      console.log("clicked the qr-code camera button");
+      if ($("#reader-container").hasClass("fadeout")) {
+        $("#reader-container").removeClass("fadeout").addClass("fadein");
+      } else {
+        $("#reader-container").removeClass("fadein").addClass("fadeout");
+      }
+    });
 
-		function hidePhoneSetting(){
-		    $("#settings").addClass('hidden');
-		    $("#phone_input").hide();
-		}
+  });
 
-		</script>
+  function hideMessageModal() {
+    $("#resultMessage").addClass('hidden');
+    console.log("hideMessageModal");
+  }
 
-	</head>
+  function hideSettingsModal() {
+    $("#settings").addClass('hidden');
+    console.log("hideSettingsModal");
+  }
 
-	<body>
-		<div id="base">
-			<div id="app">
-				<div class="flex-item">
-					
-					<div class="fa fa-gear fa-2x"> </div>
+  function showPhoneSetting() {
+    $("#settings").removeClass('hidden');
+    $("#phone_input").show();
 
-          <div id="settings" class="modal hidden">
-          	<div class="modal-bkgrnd">
-							<span onclick="hideSettingsModal()" class="close-button" type="reset"></span>
-						  <form id="phone_input">							                  
-								<label for=""><h2>Enter ID</h2></label>							                  
-								<input id="rviVinInput" class="text-input" size="45" placeholder="Nickname, ID or VIN number">	
-								<div class="input-group">
-									<button id="qr-code" class="qrcode-button"></button>			                  
-									<button id="setPhone" class="button-blue">submit</button>
-								</div>
-								<div id="reader-container" class="flex-center fadeout">
-									<div id="reader" class="reader center flex-center"></div>
-								</div>
-	          	</form>
-	          </div>
-	        </div>
+    $("#rviVinInput").val(localStorage["rviVin"]);
+    $("#password_input").hide();
+  }
 
-					<div class="static_parts_bg"></div>		
-					<div id="hazard_btn" class="hazard_btn"></div>
-					<div class="climate_labels">
-						<h6 class="label_borders"><strong>L CLIMATE</strong></h6>
-						<h6 class="label_borders"><strong>R CLIMATE</strong></h6>
-					</div>
-					<div id="left_seat_btn" class="left_seat_btn">
-						<div class="left_heat_seat_off"></div>
-						<div id="left_seat_btn_stage" class="left_heat_seat_on stage1"></div>
-					</div>
-					<div id="right_seat_btn" class="right_seat_btn">
-						<div class="right_heat_seat_off"></div>
-						<div id="right_seat_btn_stage" class="right_heat_seat_on stage1"></div>
-					</div>
-					<div class="left_num_bg">
-						<div id="viewport" class="scrollable left">
-							<ul class="temperature">
-								<li>LO</li>
-								<li>16°</li>
-								<li>17°</li>
-								<li>18°</li>
-								<li>19°</li>
-								<li>20°</li>
-								<li>21°</li>
-								<li>22°</li>
-								<li>23°</li>
-								<li>24°</li>
-								<li>25°</li>
-								<li>26°</li>
-								<li>27°</li>
-								<li>28°</li>
-								<li>HI</li>
-								<li></li>
-							</ul>
-						</div>
-					</div>
-					<div class="left_num_cover"></div>			
-					<div class="right_heat_seat"></div>
-					<div class="right_num_bg">
-						<div id="viewport" class="scrollable right">
-							<ul class="temperature">
-								<li>LO</li>
-								<li>16°</li>
-								<li>17°</li>
-								<li>18°</li>
-								<li>19°</li>
-								<li>20°</li>
-								<li>21°</li>
-								<li>22°</li>
-								<li>23°</li>
-								<li>24°</li>
-								<li>25°</li>
-								<li>26°</li>
-								<li>27°</li>
-								<li>28°</li>
-								<li>HI</li>
-								<li></li>
-							</ul>
-						</div>
-					</div>	
-					<div class="right_num_cover"></div>			
-					<div id="noUiSliderLeft" class="noUiSliderLeft"></div>
-					<div id="noUiSliderRight" class="noUiSliderRight"></div>
-					<div class="fanSpeedOn"></div>
-					<div id ="fanSpeedSlider" class="noUiSliderFan"></div>
-					
-					<!-- buttons bottom-->
-					<div id="fan_dir_down_btn" class="fan_dir_down_btn"></div>
-					<div id="fan_dir_right_btn" class="fan_dir_right_btn"></div>
-					<div id="fan_dir_up_btn" class="fan_dir_up_btn"></div>
-					
-					<div id="fan_control_ac" class="fan_control_ac"></div>
-					<div id="fan_control_auto" class="fan_control_auto"></div>
-					<div id="fan_control_circ" class="fan_control_circ"></div>
-					
-					<div id="defrost_max_btn" class="defrost_max_btn"></div>
-					<div id="defrost_rear_btn" class="defrost_rear_btn"></div>
-					<div id="defrost_front_btn" class="defrost_front_btn"></div>
-					<div id="bottomBarLogoImg">
-						<div class="bottomBarLogo"></div>
-					</div>
-					<div id="resultMessage" class="modal hidden">
-						<div class="modal-bkgrnd">
-							<span onclick="hideMessageModal()" class="close-button" type="reset"></span>
-							<h3>Success!</h3>
-							<p>You have saved or updated information on this device.</p>
-						</div>
-					</div>
-				</div><!--end of flex-item -->
+  function hidePhoneSetting() {
+    $("#settings").addClass('hidden');
+    $("#phone_input").hide();
+  }
+  </script>
+</head>
 
-				<!-- END HTML ELEMENTS -->
-			</div>	
-		</div>
-	</body>
+<body>
+  <div id="base">
+    <div id="app">
+      <div class="flex-item">
+        <div class="fa fa-gear fa-2x"> </div>
+        <div id="settings" class="modal hidden">
+          <div class="modal-bkgrnd">
+            <span onclick="hideSettingsModal()" class="close-button" type="reset"></span>
+            <form id="phone_input">
+              <label for="">
+                <h2>Enter ID</h2></label>
+              <input id="rviVinInput" class="text-input" size="45" placeholder="Nickname, ID or VIN number">
+              <div class="input-group">
+                <button id="qr-code" class="qrcode-button"></button>
+                <button id="setPhone" class="button-blue">submit</button>
+              </div>
+              <div id="reader-container" class="flex-center fadeout">
+                <div id="reader" class="reader center flex-center"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="static_parts_bg"></div>
+        <div id="hazard_btn" class="hazard_btn"></div>
+        <div class="climate_labels">
+          <h6 class="label_borders"><strong>L CLIMATE</strong></h6>
+          <h6 class="label_borders"><strong>R CLIMATE</strong></h6>
+        </div>
+        <div id="left_seat_btn" class="left_seat_btn">
+          <div class="left_heat_seat_off"></div>
+          <div id="left_seat_btn_stage" class="left_heat_seat_on stage1"></div>
+        </div>
+        <div id="right_seat_btn" class="right_seat_btn">
+          <div class="right_heat_seat_off"></div>
+          <div id="right_seat_btn_stage" class="right_heat_seat_on stage1"></div>
+        </div>
+        <div class="left_num_bg">
+          <div id="viewport" class="scrollable left">
+            <ul class="temperature">
+              <li>LO</li>
+              <li>16°</li>
+              <li>17°</li>
+              <li>18°</li>
+              <li>19°</li>
+              <li>20°</li>
+              <li>21°</li>
+              <li>22°</li>
+              <li>23°</li>
+              <li>24°</li>
+              <li>25°</li>
+              <li>26°</li>
+              <li>27°</li>
+              <li>28°</li>
+              <li>HI</li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+        <div class="left_num_cover"></div>
+        <div class="right_heat_seat"></div>
+        <div class="right_num_bg">
+          <div id="viewport" class="scrollable right">
+            <ul class="temperature">
+              <li>LO</li>
+              <li>16°</li>
+              <li>17°</li>
+              <li>18°</li>
+              <li>19°</li>
+              <li>20°</li>
+              <li>21°</li>
+              <li>22°</li>
+              <li>23°</li>
+              <li>24°</li>
+              <li>25°</li>
+              <li>26°</li>
+              <li>27°</li>
+              <li>28°</li>
+              <li>HI</li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+        <div class="right_num_cover"></div>
+        <div id="noUiSliderLeft" class="noUiSliderLeft"></div>
+        <div id="noUiSliderRight" class="noUiSliderRight"></div>
+        <div class="fanSpeedOn"></div>
+        <div id="fanSpeedSlider" class="noUiSliderFan"></div>
+        <!-- buttons bottom-->
+        <div id="fan_dir_down_btn" class="fan_dir_down_btn"></div>
+        <div id="fan_dir_right_btn" class="fan_dir_right_btn"></div>
+        <div id="fan_dir_up_btn" class="fan_dir_up_btn"></div>
+        <div id="fan_control_ac" class="fan_control_ac"></div>
+        <div id="fan_control_auto" class="fan_control_auto"></div>
+        <div id="fan_control_circ" class="fan_control_circ"></div>
+        <div id="defrost_max_btn" class="defrost_max_btn"></div>
+        <div id="defrost_rear_btn" class="defrost_rear_btn"></div>
+        <div id="defrost_front_btn" class="defrost_front_btn"></div>
+        <div id="bottomBarLogoImg">
+          <div class="bottomBarLogo"></div>
+        </div>
+        <div id="resultMessage" class="modal hidden">
+          <div class="modal-bkgrnd">
+            <span onclick="hideMessageModal()" class="close-button" type="reset"></span>
+            <h3>Success!</h3>
+            <p>You have saved or updated information on this device.</p>
+          </div>
+        </div>
+      </div>
+      <!--end of flex-item -->
+      <!-- END HTML ELEMENTS -->
+    </div>
+  </div>
+</body>
+
 </html>
