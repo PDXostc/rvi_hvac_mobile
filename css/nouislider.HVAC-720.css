@@ -15,67 +15,23 @@
 *
 */
 
+
 /*UI Slider stuff*/
 
-/********LEFT*******/
-.noUiSliderLeft,
-.noUiSliderLeft * {
-  display: block;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  cursor: default;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
+/********LEFT*******/		
 
 .noUiSliderLeft {
-  position: absolute;
   top: 14.5%;
   left: 2.75%;
 }
 
-.noUiSliderLeft a {
-  position: absolute;
-  z-index: 0 !important;
-}
-
-.noUiSliderLeft a:nth-child(2) {
-  background: inherit !important;
-}
-
-.noUiSliderLeft.vertical a {
-  bottom: 0;
-  width: 100%;
-}
-
-.noUiSliderLeft.horizontal a {
-  right: 0;
-}
-
 .noUiSliderLeft.connect a,
 .noUiSliderLeft.connect.lower {
-  background: url('../images/temp_bar_on_left.svg') no-repeat 1.5px 5px;
   background-size: 75%;
 }
 
-.noUiSliderLeft.disabled,
-.noUiSliderLeft.disabled.connect.lower a {
-  background: #ccc;
-  box-shadow: none;
-}
-
 .noUiSliderLeft div {
-  height: 100px;
-  border-radius: 3px;
-  background: url('../images/drag_knob.svg') no-repeat center center;
   background-position-x: 92px;
-  background-size: 15%;
-}
-
-.noUiSliderLeft.disabled div {
-  background: transparent;
 }
 
 .noUiSliderLeft.vertical {
@@ -87,66 +43,18 @@
   margin: -55px -35px 0 -35px;
 }
 
-/*********RIGHT*******/
-.noUiSliderRight,
-.noUiSliderRight * {
-  display: block;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  cursor: default;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
 .noUiSliderRight {
-  position: absolute;
   top: 14.5%;
   left: 86.5%;
 }
 
-.noUiSliderRight a {
-  position: absolute;
-  z-index: 0 !important;
-}
-
-.noUiSliderRight a:nth-child(2) {
-  background: inherit !important;
-}
-
-.noUiSliderRight.vertical a {
-  bottom: 0;
-  width: 100%;
-}
-
-.noUiSliderRight.horizontal a {
-  right: 0;
-  height: 100%;
-}
-
 .noUiSliderRight.connect a,
 .noUiSliderRight.connect.lower {
-  background: url('../images/temp_bar_on_right.svg') no-repeat 10.5px 5px;
   background-size: 75%;
 }
 
-.noUiSliderRight.disabled,
-.noUiSliderRight.disabled.connect.lower a {
-  background: #ccc;
-  box-shadow: none;
-}
-
 .noUiSliderRight div {
-  height: 100px;
-  border-radius: 3px;
   background: url('/images/drag_knob.svg') no-repeat left center;
-  background-position-x: 5px;
-  background-size: 15%;
-}
-
-.noUiSliderRight.disabled div {
-  background: transparent;
 }
 
 .noUiSliderRight.vertical {
@@ -155,44 +63,10 @@
 }
 
 .noUiSliderRight.vertical div {
-  /*margin: -50px -60px 0 -1px;*/
   margin: -55px -55px 0 -4px;
 }
 
 /*********FAN*******/
-.noUiSliderFan,
-.noUiSliderFan * {
-  display: block;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  cursor: default;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
-.noUiSliderFan {
-  position: absolute;
-  top: 35.5em;
-  left: 11.8em;
-  /* top: 63.2%; */
-  height: 12%;
-}
-
-.noUiSliderFan a {
-  position: absolute;
-  /*z-index: 1;*/
-}
-
-.noUiSliderFan a:nth-child(2) {
-  background: inherit !important;
-}
-
-.noUiSliderFan.vertical a {
-  bottom: 0;
-  width: 100%;
-}
 
 @media screen and (-ms-high-contrast: active),
 (-ms-high-contrast: none) {
@@ -223,48 +97,18 @@
   border-radius: 3px;
 }
 
-.noUiSliderFan.connect a,
-.noUiSliderFan.connect.lower {
-  background-size: 85.9%;
-}
-
-.noUiSliderFan.disabled,
-.noUiSliderFan.disabled.connect.lower a {
-  background: #ccc;
-  box-shadow: none;
-}
-
 .noUiSliderFan div {
-  width: 80px;
-  height: 100%;
-  border-radius: 3px;
-  background: #efefe7;
   background: url('/images/drag_knob.svg') no-repeat center bottom;
-  background-size: 26%;
-}
-
-.noUiSliderFan.disabled div {
-  background: transparent;
 }
 
 .noUiSliderFan.horizontal {
-  width: 42.5%;
   height: 4.5%;
 }
 
 .noUiSliderFan.horizontal a {
-  right: 0;
   height: 33%;
 }
 
-.noUiSliderFan.horizontal div {
-  margin: 0 0 0 -40px;
-}
-
 .noUiSliderFan {
-  position: absolute;
   top: 70.25%;
-  left: 33%;
-  height: 12%;
 }
-/*end UI slider stuff*/
