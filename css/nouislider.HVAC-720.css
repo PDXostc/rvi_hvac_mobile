@@ -27,7 +27,7 @@
 
 .noUiSliderLeft.connect a,
 .noUiSliderLeft.connect.lower {
-  background-size: 75%;
+  background-size: 80%;
 }
 
 .noUiSliderLeft div {
@@ -35,7 +35,7 @@
 }
 
 .noUiSliderLeft.vertical {
-  width: 13%;
+  width: 12%;
   height: 45.5%;
 }
 
@@ -43,22 +43,25 @@
   margin: -55px -35px 0 -35px;
 }
 
+/*********RIGHT*******/
 .noUiSliderRight {
   top: 14.5%;
-  left: 86.5%;
+  left: 86%;
 }
 
 .noUiSliderRight.connect a,
 .noUiSliderRight.connect.lower {
-  background-size: 75%;
+  background-size: 80%;
 }
 
 .noUiSliderRight div {
   background: url('/images/drag_knob.svg') no-repeat left center;
+  background-position-x: 4px;
+  background-size: 15%;
 }
 
 .noUiSliderRight.vertical {
-  width: 13%;
+  width: 12%;
   height: 45.5%;
 }
 
@@ -67,7 +70,6 @@
 }
 
 /*********FAN*******/
-
 @media screen and (-ms-high-contrast: active),
 (-ms-high-contrast: none) {
   .noUiSliderFan:before,
