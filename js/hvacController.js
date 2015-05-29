@@ -17,7 +17,7 @@
 var hvacController = function () {
 	"use strict";
 	this.initButtons();
-	
+
 };
 
 /**
@@ -278,7 +278,7 @@ hvacController.prototype.onFanChanged = function (newStatus) {
  */
 hvacController.prototype.onFanSpeedChanged = function (newStatus) {
 	"use strict";
-	
+
 	$("#fanSpeedSlider").val(newStatus);
 	$(".fanSpeedOn").css('width', parseInt($(".noUiSliderFan.horizontal.connect").find("a").css('left'), 10));
 	if (newStatus === 0) {
@@ -369,7 +369,7 @@ hvacController.prototype.onHazardChanged = function (newStatus) {
  * @param status {Integer} new status of Right SeatHeater
  */
 hvacController.prototype.onSeatHeaterRightChanged = function (status) {
-	"use strict";	
+	"use strict";
 	hvacController.prototype.status.SeatHeaterRight = status;
 	toggleSeatHeaterButton(status, "#right_seat_btn_stage");
 };
@@ -509,6 +509,20 @@ hvacController.prototype.onRearDefrostChanged = function (newStatus) {
 hvacController.prototype.onFrontDefrostChanged = function (newStatus) {
 	"use strict";
 	toggleButton(newStatus, "#defrost_front_btn");
+}
+
+/**
+ * Sets the status of Max Defrost button. Allows following values:
+ *
+ * * `true` - `ON`
+ * * `false` - `OFF`
+ *
+ * @method onMaxDefrostChanged
+ * @param newStatus {Boolean} new status of the Max Defrost
+ */
+hvacController.prototype.onMaxDefrostChanged = function (newStatus) {
+	"use strict";
+	toggleButton(newStatus, "#defrost_max_btn");
 };
 
 /**
@@ -521,7 +535,7 @@ hvacController.prototype.initButtons = function () {
 	$("#hazard_btn").bind('click', function () {
 	    //carIndicator.status.hazard = !carIndicator.status.hazard;
 	    console.log("hazard click: "+ carIndicator.status.hazard);
-	    
+
 	    // -- Call onChanged() directly as the Hazard Flasher is really a virtual device.
 	    //    onHazardChanged
 	    hvacController.prototype.onHazardChanged(); //carIndicator.status.hazard
@@ -537,7 +551,7 @@ hvacController.prototype.initButtons = function () {
 	// AUTO AC
 	$("#fan_control_auto").bind('click', function () {
 		if (!$("#fan_control_auto").hasClass("on")) {
-			
+
 			autoACStatus.fanSpeed = hvacController.prototype.status.fanSpeed;
 			autoACStatus.airflowDirection = hvacController.prototype.status.airflowDirection;
 			autoACStatus.fan = hvacController.prototype.status.fan;
@@ -586,7 +600,7 @@ hvacController.prototype.initButtons = function () {
 
 			setAirFlowDirectionStatus(autoACStatus.airflowDirection);
 
-			
+
 			//carIndicator.setStatus("Fan", autoACStatus.fan);
 			//carIndicator.setStatus("ACCommand", autoACStatus.fan);
 
@@ -657,7 +671,7 @@ hvacController.prototype.initButtons = function () {
 		}
 		;
 		if (!newStatus) newStatus = 0;
-		
+
 		hvacController.prototype.onSeatHeaterLeftChanged(newStatus);
 		sendRVI("hvac/seat_heat_left",newStatus);
 	});
@@ -694,7 +708,7 @@ hvacController.prototype.initButtons = function () {
 			$("#defrost_max_btn").removeClass("on");
 		} else {
 			$("#defrost_max_btn").addClass("on");
-			
+
 			/*
 			if (carIndicator.status.targetTemperatureLeft < 16) {
 				carIndicator.setStatus("targetTemperatureLeft", 16);
