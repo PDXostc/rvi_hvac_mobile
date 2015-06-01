@@ -163,10 +163,10 @@ function toggleSeatHeaterButton(status, button) {
 function toggleButton(buttonStatus, button) {
 	"use strict";
 	// Note: Some signals do not return boolean values!
-	if (buttonStatus === true || buttonStatus === "true" || buttonStatus != 0) {
-		$(button).addClass("on");
-	} else {
+	if (buttonStatus === false || buttonStatus === "false" || buttonStatus == 0) {
 		$(button).removeClass("on");
+	} else {
+		$(button).addClass("on");
 	}
 }
 

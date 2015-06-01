@@ -200,15 +200,15 @@ function seat_heat_left_rcb(args){
 }
 
 function defrost_rear_rcb(args) {
-	hvacIndicator.onRearDefrostChanged(Number(args['value']));
+	hvacIndicator.onRearDefrostChanged(args['value']);
 }
 
 function defrost_front_rcb(args) {
-	hvacIndicator.onFrontDefrostChanged(Number(args['value']));
+	hvacIndicator.onFrontDefrostChanged(args['value']);
 }
 
 function defrost_max_rcb(args) {
-	hvacIndicator.onMaxDefrostChanged(Number(args['value']));
+	hvacIndicator.onMaxDefrostChanged(args['value']);
 }
 
 function airflow_direction_rcb(args){
