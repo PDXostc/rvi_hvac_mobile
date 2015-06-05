@@ -726,6 +726,8 @@ hvacController.prototype.initButtons = function () {
 
 			switchAutoACOff();
 		}
+
+		sendRVI("hvac/defrost_max", !!($("#defrost_max_btn").hasClass("on")));
 	});
 	// Defrost - Rear
 	$("#defrost_rear_btn").bind('click', function () {
