@@ -232,7 +232,8 @@ hvacController.prototype.status = {
     airRecirculation: false,
     targetTemperatureRight: 0,
     targetTemperatureLeft: 0,
-    maxDefrost: false
+    maxDefrost: false,
+    hazard: false
 }
 
 /**
@@ -537,16 +538,15 @@ hvacController.prototype.onMaxDefrostChanged = function (newStatus) {
  * @method initButtons
  */
 hvacController.prototype.initButtons = function () {
-
 	"use strict";
 	// Hazard
 	$("#hazard_btn").bind('click', function () {
-	    //carIndicator.status.hazard = !carIndicator.status.hazard;
-	    console.log("hazard click: " + carIndicator.status.hazard);
 
-	    // -- Call onChanged() directly as the Hazard Flasher is really a virtual device.
-	    //    onHazardChanged
-	    hvacController.prototype.onHazardChanged(); //carIndicator.status.hazard
+		hvacController.prototype.status.hazard = !hvacController.prototype.status.hazard;
+		hvacController.prototype.onHazardChanged(hvacController.prototype.status.hazard);
+
+		sendRVI("hvac/hazard", hvacController.prototype.status.hazard);
+
 	});
 
 	// A/C
