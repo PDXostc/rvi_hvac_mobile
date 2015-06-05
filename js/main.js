@@ -3,7 +3,7 @@
 * Proprietary and confidential
 * Unauthorized copying of this file, via any medium, is strictly prohibited
 *
-* THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY 
+* THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
 * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
 * IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
 * PARTICULAR PURPOSE.
@@ -22,7 +22,7 @@
 
 /**
  * Initialize application components and register button events.
- * 
+ *
  * @method init
  * @static
  */
@@ -92,7 +92,7 @@ function setup_ui() {
 	    connect : "upper",
 	    orientation : "vertical",
 	    slide : function() {
-		
+
 			var newVal = ($(this).val() + 29) - ($(this).val() * 2);
 			sendRVI("hvac/temp_right",newVal);
 			hvacIndicator.onTargetTemperatureRightChanged(newVal);
@@ -107,7 +107,7 @@ function setup_ui() {
 	    connect : "upper",
 	    orientation : "horizontal",
 	    slide : function() {
-			sendRVI("hvac/fan_speed",$(this).val());	
+			sendRVI("hvac/fan_speed",$(this).val());
 	    	hvacIndicator.onFanSpeedChanged($(this).val());
 
 	    }
@@ -121,11 +121,11 @@ function setVin(vinValue){
 }
 
 function sendRVI(key, value){
-	
+
 	if(localStorage['rviVin'] == undefined){
 		console.log("No rviVin defined");
 		return false;
-	} 
+	}
 
     value = JSON.stringify({value:value.toString(),sending_node:"jlr.com/backend/"+localStorage['mobileVin']+"/" });
     service = "jlr.com/vin/" + localStorage['rviVin']+"/" +key;
@@ -139,7 +139,7 @@ function sendRVI(key, value){
 function subscribeToVin(){
 	node = "jlr.com/backend/" + localStorage['mobileVin']+"/";
 	sendRVI("hvac/subscribe",JSON.stringify({"node":node}));
-	
+
 }
 
 function unsubscribeToVin(){
@@ -148,7 +148,7 @@ function unsubscribeToVin(){
 
 
 /*
-	Registers client with RVI 
+	Registers client with RVI
 */
 function registerMobileServices(){
 
@@ -163,7 +163,8 @@ function registerMobileServices(){
 		{"name":"hvac/seat_heat_left","callback":"seat_heat_left_rcb"},
 		{"name":"hvac/airflow_direction","callback":"airflow_direction_rcb"},
 		{"name":"hvac/defrost_rear","callback":"defrost_rear_rcb"},
-		{"name":"hvac/defrost_front","callback":"defrost_front_rcb"}	
+		{"name":"hvac/defrost_front","callback":"defrost_front_rcb"},
+		{"name":"hvac/defrost_max","callback":"defrost_max_rcb"}
 	];
 
 	for(serviceName in hvacServices){
@@ -196,6 +197,18 @@ function seat_heat_right_rcb(args){
 function seat_heat_left_rcb(args){
 	//carIndicator.setStatus("seatHeaterRight", parseInt(args.value));
 	hvacIndicator.onSeatHeaterLeftChanged(Number(args['value']));
+}
+
+function defrost_rear_rcb(args) {
+	hvacIndicator.onRearDefrostChanged(Number(args['value']));
+}
+
+function defrost_front_rcb(args) {
+	hvacIndicator.onFrontDefrostChanged(Number(args['value']));
+}
+
+function defrost_max_rcb(args) {
+	hvacIndicator.onMaxDefrostChanged(Number(args['value']));
 }
 
 function airflow_direction_rcb(args){
