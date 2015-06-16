@@ -42,7 +42,8 @@ var init_hvac = function () {
     }
 
     rvi = new RVI();
-    rvi.connect("ws://rvi1.nginfotpdx.net:8808/websession",function(e){console.log(e)});
+    rvi.connect("ws://rvi-test1.nginfotpdx.net:8808/websession",function(e){console.log(e)});
+    //rvi.connect("ws://rvi1.nginfotpdx.net:8808/websession",function(e){console.log(e)});
 	registerMobileServices();
 };
 
@@ -153,24 +154,36 @@ function unsubscribeToVin(){
 function registerMobileServices(){
 
 	hvacServices = [
-//		{"name":"hvac/air_circ","callback":"aircirc_rcb"},
-		{"name":"hvac/fan","callback":"fan_rcb"},
-		{"name":"hvac/fan_speed","callback":"fanspeed_rcb"},
-		{"name":"hvac/temp_left","callback":"temp_left_rcb"},
-		{"name":"hvac/temp_right","callback":"temp_right_rcb"},
-		{"name":"hvac/hazard","callback":"hazard_rcb"},
-		{"name":"hvac/seat_heat_right","callback":"seat_heat_right_rcb"},
-		{"name":"hvac/seat_heat_left","callback":"seat_heat_left_rcb"},
-		{"name":"hvac/airflow_direction","callback":"airflow_direction_rcb"},
-		{"name":"hvac/defrost_rear","callback":"defrost_rear_rcb"},
-		{"name":"hvac/defrost_front","callback":"defrost_front_rcb"},
-		{"name":"hvac/defrost_max","callback":"defrost_max_rcb"}
+		{"name":"hvac/air_circ","callback":aircirc_rcb},
+		{"name":"hvac/fan","callback":fan_rcb},
+		{"name":"hvac/fan_speed","callback":fanspeed_rcb},
+		{"name":"hvac/temp_left","callback":temp_left_rcb},
+		{"name":"hvac/temp_right","callback":temp_right_rcb},
+		{"name":"hvac/hazard","callback":hazard_rcb},
+		{"name":"hvac/seat_heat_right","callback":seat_heat_right_rcb},
+		{"name":"hvac/seat_heat_left","callback":seat_heat_left_rcb},
+		{"name":"hvac/airflow_direction","callback":airflow_direction_rcb},
+		{"name":"hvac/defrost_rear","callback":defrost_rear_rcb},
+		{"name":"hvac/defrost_front","callback":defrost_front_rcb},
+		{"name":"hvac/defrost_max","callback":defrost_max_rcb}
 	];
 
 	for(serviceName in hvacServices){
 		rvi.register_service(localStorage['mobileVin']+"/"+hvacServices[serviceName].name,hvacServices[serviceName].callback);
 		console.log("Registered callback `"+hvacServices[serviceName].callback+"` for "+hvacServices[serviceName].name);
 	}
+}
+
+function aircirc_rcb(args) {
+	hvacIndicator.onAirRecirculationChanged(args['value']);
+}
+
+function fan_rcb(args) {
+	hvacIndicator.onFanChanged(args['value']);
+}
+
+function hazard_rcb(args) {
+	hvacIndicator.onHazardChanged(args['value']);
 }
 
 function fanspeed_rcb(args){

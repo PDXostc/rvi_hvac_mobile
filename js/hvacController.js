@@ -248,11 +248,11 @@ hvacController.prototype.status = {
 hvacController.prototype.onAirRecirculationChanged = function (newStatus) {
 	"use strict";
 	// Actual value of newStatus will be either 0 or 1...
-	if (newStatus == true) {
+	if (newStatus == false || newStatus == "false") {
+		$("#fan_control_circ").removeClass("on");
+	} else {
 		$("#fan_control_circ").addClass("on");
 		switchAutoACOff();
-	} else {
-		$("#fan_control_circ").removeClass("on");
 	}
 };
 
