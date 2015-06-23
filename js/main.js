@@ -128,23 +128,26 @@ function sendRVI(key, value){
 		return false;
 	}
 
-    value = JSON.stringify({value:value.toString(),sending_node:"jlr.com/backend/"+localStorage['mobileVin']+"/" });
+    //value = JSON.stringify({value:value.toString(),sending_node:"jlr.com/backend/"+localStorage['mobileVin']+"/" });
+    var parameters = {value : value.toString(), sending_node : "jlr.com/backend/" + localStorage['mobileVin'] + "/" };
+
     service = "jlr.com/vin/" + localStorage['rviVin']+"/" +key;
 
     console.log("Service:" + key);
     console.log("Val: " + value );
-    rvi.send_message(service, 5000, value, key);
+    rvi.send_message(service, 5000, parameters, key);
 }
 
 //Pass the mobile identifier to a TizenBox
 function subscribeToVin(){
 	node = "jlr.com/backend/" + localStorage['mobileVin']+"/";
-	sendRVI("hvac/subscribe",JSON.stringify({"node":node}));
+	sendRVI("hvac/subscribe", {"node":node});
+	//sendRVI("hvac/subscribe",JSON.stringify({"node":node}));
 
 }
 
 function unsubscribeToVin(){
-	sendRVI("hvac/unsubscribe",true);
+	sendRVI("hvac/unsubscribe", true);
 }
 
 
