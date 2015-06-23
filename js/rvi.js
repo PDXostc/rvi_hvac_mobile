@@ -14,7 +14,7 @@
 function RVI() {
 
     console.log("Starting up service RVI");
-    RVI.instance = this
+    RVI.instance = this;
 
     this.is_connected = false;
     this.trans_id = 1;
@@ -23,16 +23,16 @@ function RVI() {
     this.OK = 0;
     this.NOT_CONNECTED = 1;
     this.on_service_available = function () {
-    }
+    };
     this.on_service_unavailable = function () {
-    }
+    };
     this.on_error = function () {
-    }
+    };
 
     this.next_trans_id = function () {
         this.trans_id = this.trans_id + 1;
         return this.trans_id;
-    }
+    };
 
     // Connect to an RVI node using
     // websockets
@@ -60,20 +60,20 @@ function RVI() {
             // Invoke connect cb, if defined
             if (typeof this.parent.on_connect != "undefined")
                 this.parent.on_connect(this.parent);
-        }
+        };
 
         this.ws.close = function (evt) {
             console.log("RVI disconnected.");
             this.connected = false;
-        }
+        };
 
         this.ws.onmessage = function (evt) {
             console.log("onmessage(): Got: " + JSON.stringify(evt));
             this.parent.dispatch_message(evt);
-        }
+        };
 
         this.ws.onerror = this.on_error;
-    }
+    };
 
 
     // Register a service.
@@ -119,7 +119,7 @@ function RVI() {
             this.onmessage = function (evt) {
                 this.parent.dispatch_message(evt);
             }
-        }
+        };
 
         this.ws.send(JSON.stringify({
             'json-rpc': "2.0",
@@ -130,7 +130,7 @@ function RVI() {
             }
         }));
         return this.OK;
-    }
+    };
 
     // Unregister a service
     this.unregister_service = function (service) {
@@ -154,7 +154,7 @@ function RVI() {
         delete this.service_map[service];
 
         return this.OK;
-    }
+    };
 
 
     this.disconnect = function () {
@@ -163,7 +163,7 @@ function RVI() {
 
         this.ws.close(); // Server will unregister all services on its end
         return this.OK;
-    }
+    };
 
     this.send_message = function (service, timeout, payload, cb) {
         console.log("RVI: message:  " + service);
@@ -187,7 +187,7 @@ function RVI() {
             this.onmessage = function (evt) {
                 this.parent.dispatch_message(evt);
             }
-        }
+        };
 
         this.ws.send(JSON.stringify({
             'json-rpc': "2.0",
@@ -199,12 +199,12 @@ function RVI() {
                 parameters: payload,
             }
         }));
-    }
+    };
 
     // Retrieve the full service name for a service
     this.get_full_service_name = function (local_service_name) {
         return this.service_name[local_service_name].full_name;
-    }
+    };
 
     this.dispatch_message = function (evt) {
         dt = JSON.parse(evt.data);
