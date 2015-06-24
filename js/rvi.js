@@ -83,21 +83,21 @@ function RVI() {
         if (service[0] != '/')
             service = '/' + service;
 
-        // If we are not connected, then just update the
-        // service map and return.
-        // Once the connection goes through, we will register
-        // all services
+        // First, just save the callback method
+        this.service_map[service] = {
+            cb_fun: service_fun,
+            full_name: undefined
+        };
+
+        // If we are not connected, just return.
+        // Once the connection goes through, we will register all services
         if (!this.is_connected) {
             console.log("RVI: Deferring service registration: " + service);
-            this.service_map[service] = {
-                cb_fun: service_fun,
-                full_name: undefined
-            };
+
             return this.OK
         }
 
         console.log("RVI: Registering RVI service: " + service);
-        console.log("RVI: Registering callback: " + service_fun);
 
         //
         // Redirect ws.onmessage to handle service registration replies
@@ -105,13 +105,16 @@ function RVI() {
         this.ws.onmessage = function (evt) {
             console.log("RVI: Register service result: " + JSON.parse(evt.data).service);
 
-            // If this is a new service, set it up
-            if (typeof this.parent.service_map[service] === "undefined") {
-                this.service_map[service] = {
-                    cb_fun: service_fun,
-                    full_name: JSON.parse(evt.data).service
-                };
-            } else // Update full name of existing service.
+            //// If this is a new service, set it up
+            //if (typeof this.parent.service_map[service] === "undefined") {
+            //    this.parent.service_map[service] = {
+            //        cb_fun: service_fun,
+            //        full_name: JSON.parse(evt.data).service
+            //    };
+            //
+            //    console.log("Service: " + JSON.stringify(this.parent.service_map));
+            //
+            //} else // Update full name of existing service.
                 this.parent.service_map[service].full_name = JSON.parse(evt.data).service;
 
 
@@ -129,6 +132,7 @@ function RVI() {
                 service_name: service
             }
         }));
+
         return this.OK;
     };
 
@@ -165,7 +169,7 @@ function RVI() {
         return this.OK;
     };
 
-    this.send_message = function (service, timeout, payload, cb) {
+    this.send_message = function (service, timeout, payload, cb) {// TODO: Fix the parameters and the method that calls this method
         console.log("RVI: message:  " + service);
         console.log("RVI: timeout:  " + timeout);
         console.log("RVI: params:   " + JSON.stringify(payload));
@@ -217,7 +221,7 @@ function RVI() {
             console.log("RVI: dispatch_message: " + parameters);
 
             // CHECK USE of window
-            if (this.service_map[svc]) {
+            if (!!this.service_map[svc]) {
                 // Original tizen code had
                 // window[this.service_map[svc].cb_fun](parameters);
                 this.service_map[svc].cb_fun(parameters);
