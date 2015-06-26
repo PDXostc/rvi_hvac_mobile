@@ -42,7 +42,7 @@ var init_hvac = function () {
     }
 
     rvi = new RVI();
-    rvi.connect("ws://rvi-test1.nginfotpdx.net:8808/websession",function(e){console.log(e)});
+    rvi.connect("ws://rvi1.nginfotpdx.net:8808/websession",function(e){console.log(e)});
     //rvi.connect("ws://rvi1.nginfotpdx.net:8808/websession",function(e){console.log(e)});
 	registerMobileServices();
 };
