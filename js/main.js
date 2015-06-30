@@ -43,7 +43,6 @@ var init_hvac = function () {
 
     rvi = new RVI();
     rvi.connect("ws://rvi1.nginfotpdx.net:8808/websession",function(e){console.log(e)});
-    //rvi.connect("ws://rvi1.nginfotpdx.net:8808/websession",function(e){console.log(e)});
 	registerMobileServices();
 };
 
@@ -141,8 +140,7 @@ function sendRVI(key, value){
 //Pass the mobile identifier to a TizenBox
 function subscribeToVin(){
 	node = "jlr.com/backend/" + localStorage['mobileVin']+"/";
-	sendRVI("hvac/subscribe", {"node":node});
-	//sendRVI("hvac/subscribe",JSON.stringify({"node":node}));
+	sendRVI("hvac/subscribe",JSON.stringify({"node":node}));
 
 }
 
