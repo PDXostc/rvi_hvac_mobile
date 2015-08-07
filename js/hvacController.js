@@ -267,12 +267,14 @@ hvacController.prototype.onAirRecirculationChanged = function (newStatus) {
  */
 hvacController.prototype.onFanChanged = function (newStatus) {
 	"use strict";
-	if (newStatus === false || newStatus === "false") {
+/*	if (newStatus === false || newStatus === "false") {
 		$("#fan_control_ac").removeClass("on");
 		switchAutoACOff();
 	} else {
 		$("#fan_control_ac").addClass("on");
-	}
+	}*/
+	"use strict";
+	toggleButton(newStatus, "#fan_control_ac");
 };
 
 /**
@@ -534,6 +536,21 @@ hvacController.prototype.onMaxDefrostChanged = function (newStatus) {
 };
 
 /**
+ * Sets the status of Auto Control button. Allows following values:
+ *
+ * * `true` - `ON`
+ * * `false` - `OFF`
+ *
+ * @method onAutoChanged
+ * @param newStatus {Boolean} new status of the Auto Button
+ */
+hvacController.prototype.onAutoChanged = function (newStatus) {
+	"use strict";
+	toggleButton(newStatus, "#fan_control_auto");
+};
+
+
+/**
  * HVAC buttons initialisation.
  * @method initButtons
  */
@@ -553,8 +570,19 @@ hvacController.prototype.initButtons = function () {
 	$("#fan_control_ac").bind('click', function () {
 		//carIndicator.setStatus("Fan", !carIndicator.status.fan);
 		//carIndicator.setStatus("ACCommand", !carIndicator.status.fan);
-		hvacController.prototype.status.fan = !hvacController.prototype.status.fan;
 
+		//hvacController.prototype.onFanChanged(!hvacController.prototype.status.fan);
+		if ($("#fan_control_ac").hasClass("on")) {
+			$("#fan_control_ac").removeClass("on");
+			hvacController.prototype.status.fan = !hvacController.prototype.status.fan
+			hvacController.prototype.onFanChanged(hvacController.prototype.status.fan);
+			sendRVI("hvac/fan", hvacController.prototype.status.fan);
+		} else {
+			$("#fan_control_ac").addClass("on");
+			hvacController.prototype.status.fan = !hvacController.prototype.status.fan
+			hvacController.prototype.onFanChanged(hvacController.prototype.status.fan);
+			sendRVI("hvac/fan", hvacController.prototype.status.fan);			
+		}
 	});
 
 	// AUTO AC
@@ -578,8 +606,14 @@ hvacController.prototype.initButtons = function () {
 			hvacController.prototype.onFanSpeedChanged(0);
 
 			setAirFlowDirectionStatus(0);
-			hvacController.prototype.status.Fan = true
-			hvacController.prototype.status.ACComand = true;
+/*			hvacController.prototype.status.fan = true
+			hvacController.prototype.status.ACComand = true;*/
+			if(!$("#fan_control_ac").hasClass("on")){
+				$("#fan_control_ac").addClass("on");
+				hvacController.prototype.status.fan = !hvacController.prototype.status.fan
+				hvacController.prototype.onFanChanged(hvacController.prototype.status.fan);
+				sendRVI("hvac/fan", hvacController.prototype.status.fan);
+			}
 
 			hvacController.prototype.onFanChanged(true);
 			//carIndicator.setStatus("Fan", true);
@@ -590,7 +624,7 @@ hvacController.prototype.initButtons = function () {
 			hvacController.prototype.status.airRecirculation = false;
 			hvacController.prototype.status.RecircReq = 0;
 
-			if (autoACStatus.targetTemperatureRight < 16 || autoACStatus.targetTemperatureRight > 28) {
+/*			if (autoACStatus.targetTemperatureRight < 16 || autoACStatus.targetTemperatureRight > 28) {
 				hvacController.prototype.onTargetTemperatureRightChanged(22);
 
 				//carIndicator.setStatus("targetTemperatureRight", 22);
@@ -600,7 +634,7 @@ hvacController.prototype.initButtons = function () {
 				hvacController.prototype.onTargetTemperatureLeftChanged(22);
 				//carIndicator.setStatus("targetTemperatureLeft", 22);
 				//carIndicator.setStatus("FrontTSetLeftCmd", 22);
-			}
+			} */
 		} else {
 			$("#fan_control_auto").removeClass("on");
 
@@ -626,12 +660,24 @@ hvacController.prototype.initButtons = function () {
 				$("#defrost_max_btn").addClass("on");
 			}
 		}
+		sendRVI("hvac/control_auto", !!($("#fan_control_auto").hasClass("on")));
 	});
 
 	// AirRecirculation
 	$("#fan_control_circ").bind('click', function () {
 		//carIndicator.setStatus("airRecirculation", !carIndicator.status.airRecirculation);
 		//carIndicator.setStatus("RecircReq", !carIndicator.status.airRecirculation ? 1 : 0);
+		if (!$("fan_control_circ").hasClass("on")){
+			$("fan_control_circ").addClass("on");
+			hvacController.prototype.status.airRecirculation = !hvacController.prototype.status.airRecirculation
+			hvacController.prototype.onAirRecirculationChanged(hvacController.prototype.status.airRecirculation);
+			sendRVI("hvac/air_circ", hvacController.prototype.status.airRecirculation);
+		} else {
+			$("fan_control_circ").removeClass("on");
+			hvacController.prototype.status.airRecirculation = !hvacController.prototype.status.airRecirculation
+			hvacController.prototype.onAirRecirculationChanged(hvacController.prototype.status.airRecirculation);
+			sendRVI("hvac/air_circ", hvacController.prototype.status.airRecirculation);
+		}
 
 	});
 	// SeatHeater - front right
@@ -736,9 +782,30 @@ hvacController.prototype.initButtons = function () {
 			carIndicator.setStatus("fanSpeed", 8);
 			carIndicator.setStatus("FrontBlwrSpeedCmd", 15);
 			*/
-			setAirFlowDirectionStatus(7);
+			hvacController.prototype.status.fanSpeed = 5;
+			hvacController.prototype.onFanSpeedChanged(5);
+
+			if (!$("#fan_dir_up_btn").hasClass("on")){
+				setAirFlowDirectionStatus(4);
+				sendRVI("hvac/airflow_direction", 4);
+			}
 
 			switchAutoACOff();
+
+			if (!$("#defrost_rear_btn").hasClass("on")){
+				$("#defrost_rear_btn").addClass("on");
+				hvacController.prototype.status.rearDefrost = !hvacController.prototype.status.rearDefrost
+				hvacController.prototype.onRearDefrostChanged(hvacController.prototype.status.rearDefrost);
+				sendRVI("hvac/defrost_rear", hvacController.prototype.status.rearDefrost);
+			}
+
+			if(!$("#defrost_front_btn").hasClass("on")){
+				$("#defrost_front_btn").addClass("on");
+				hvacController.prototype.status.frontDefrost = !hvacController.prototype.status.frontDefrost
+				hvacController.prototype.onFrontDefrostChanged(hvacController.prototype.status.frontDefrost);
+				sendRVI("hvac/defrost_front", hvacController.prototype.status.frontDefrost);	
+			}
+
 		}
 
 		sendRVI("hvac/defrost_max", !!($("#defrost_max_btn").hasClass("on")));
@@ -746,17 +813,33 @@ hvacController.prototype.initButtons = function () {
 
 	// Defrost - Rear
 	$("#defrost_rear_btn").bind('click', function () {
-		hvacController.prototype.status.rearDefrost = !hvacController.prototype.status.rearDefrost
-		hvacController.prototype.onRearDefrostChanged(hvacController.prototype.status.rearDefrost);
-		sendRVI("hvac/defrost_rear", hvacController.prototype.status.rearDefrost);
+		if($("#defrost_rear_btn").hasClass("on")){
+			$("#defrost_rear_btn").removeClass("on");
+			hvacController.prototype.status.rearDefrost = !hvacController.prototype.status.rearDefrost
+			hvacController.prototype.onRearDefrostChanged(hvacController.prototype.status.rearDefrost);
+			sendRVI("hvac/defrost_rear", hvacController.prototype.status.rearDefrost);
+		} else{
+			$("#defrost_rear_btn").addClass("on");
+			hvacController.prototype.status.rearDefrost = !hvacController.prototype.status.rearDefrost
+			hvacController.prototype.onRearDefrostChanged(hvacController.prototype.status.rearDefrost);
+			sendRVI("hvac/defrost_rear", hvacController.prototype.status.rearDefrost);
+		}
 	});
 
 	// Defrost - Front
 	$("#defrost_front_btn").bind('click', function () {
 		//Invert value
-		hvacController.prototype.status.frontDefrost = !hvacController.prototype.status.frontDefrost
-		hvacController.prototype.onFrontDefrostChanged(hvacController.prototype.status.frontDefrost);
-		sendRVI("hvac/defrost_front", hvacController.prototype.status.frontDefrost);
+		if($("#defrost_front_btn").hasClass("on")){
+			$("#defrost_front_btn").removeClass("on");
+			hvacController.prototype.status.frontDefrost = !hvacController.prototype.status.frontDefrost
+			hvacController.prototype.onFrontDefrostChanged(hvacController.prototype.status.frontDefrost);
+			sendRVI("hvac/defrost_front", hvacController.prototype.status.frontDefrost);
+		} else {
+			$("#defrost_front_btn").addClass("on");
+			hvacController.prototype.status.frontDefrost = !hvacController.prototype.status.frontDefrost
+			hvacController.prototype.onFrontDefrostChanged(hvacController.prototype.status.frontDefrost);
+			sendRVI("hvac/defrost_front", hvacController.prototype.status.frontDefrost);			
+		}
 	});
 };
 

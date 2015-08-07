@@ -42,7 +42,7 @@ var init_hvac = function () {
     }
 
     rvi = new RVI();
-    rvi.connect("ws://rvi1.nginfotpdx.net:8808/websession",function(e){console.log(e)});
+    rvi.connect("ws://38.129.64.13:8808/websession",function(e){console.log(e)});
 	registerMobileServices();
 };
 
@@ -67,7 +67,7 @@ function setup_ui() {
 	    connect : "upper",
 	    orientation : "vertical",
 	    slide : function() {
-			if ($("#defrost_max_btn").hasClass("on")) {
+/*			if ($("#defrost_max_btn").hasClass("on")) {
 			    switch ($(this).val()) {
 			    case 0:
 				$(this).val(1);
@@ -76,7 +76,7 @@ function setup_ui() {
 				$(this).val(13);
 				break;
 			    }
-			}
+			}*/
 
 			var newVal = ($(this).val() + 29) - ($(this).val() * 2);
 			sendRVI("hvac/temp_left",newVal);
@@ -166,7 +166,8 @@ function registerMobileServices(){
 		{"name":"hvac/airflow_direction","callback":airflow_direction_rcb},
 		{"name":"hvac/defrost_rear","callback":defrost_rear_rcb},
 		{"name":"hvac/defrost_front","callback":defrost_front_rcb},
-		{"name":"hvac/defrost_max","callback":defrost_max_rcb}
+		{"name":"hvac/defrost_max","callback":defrost_max_rcb},
+		{"name":"hvac/control_auto","callback":control_auto_rcb}
 	];
 
 	for(serviceName in hvacServices){
@@ -223,6 +224,10 @@ function defrost_front_rcb(args) {
 
 function defrost_max_rcb(args) {
 	hvacIndicator.onMaxDefrostChanged(args['value']);
+}
+
+function control_auto_rcb(args) {
+	hvacIndicator.onAutoChanged(args['value']);
 }
 
 function airflow_direction_rcb(args){
